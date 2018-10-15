@@ -1,18 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/appBackground"
+    android:orientation="vertical"
     tools:context=".HomeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="10px"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/iBattery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:contentDescription="Battery"
+            app:srcCompat="@drawable/battery" />
+
+        <TextView
+            android:id="@+id/popa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="POPA" />
+
+        <TextView
+            android:id="@+id/sync"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="sync" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20px"
+        android:layout_weight="2"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/bSteps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:contentDescription="Steps"
+                android:paddingTop="25px"
+                app:srcCompat="@drawable/footsteps" />
+
+            <TextView
+                android:id="@+id/tSteps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:paddingBottom="25px"
+                android:text="6473"
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/bHeart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:contentDescription="Heart"
+                android:paddingTop="25px"
+                app:srcCompat="@drawable/heart" />
+
+            <TextView
+                android:id="@+id/tHeart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:paddingBottom="25px"
+                android:text="88"
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15px"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/bStatistics"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="15px"
+            android:layout_weight="0.5"
+            android:background="@color/tileBackground"
+            android:contentDescription="Statistics"
+            android:paddingTop="25px"
+            android:paddingBottom="25px"
+            app:srcCompat="@drawable/statistics" />
+
+        <ImageButton
+            android:id="@+id/bDiary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15px"
+            android:layout_weight="0.5"
+            android:background="@color/tileBackground"
+            android:contentDescription="Diary"
+            android:paddingTop="25px"
+            android:paddingBottom="25px"
+            app:srcCompat="@drawable/diary" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20px"
+        android:layout_marginBottom="10px"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/bInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="15px"
+            android:layout_weight="0.5"
+            android:background="@color/tileBackground"
+            android:contentDescription="Info"
+            android:paddingTop="25px"
+            android:paddingBottom="25px"
+            app:srcCompat="@drawable/info" />
+
+        <ImageButton
+            android:id="@+id/bSettings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15px"
+            android:layout_weight="0.5"
+            android:background="@color/tileBackground"
+            android:contentDescription="Settings"
+            app:srcCompat="@drawable/settings" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20px"
+        android:layout_marginBottom="10px"
+        android:layout_weight="3"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/bPet"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/tileBackground"
+            android:paddingBottom="10px"
+            app:srcCompat="@drawable/gunterv2" />
+    </LinearLayout>
+
+</LinearLayout>

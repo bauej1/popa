@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!--System Colors-->
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#03af1960</color>
+    <color name="colorAccent">#af1960</color>
+    <color name="colorWatermark">#64af1960</color>
+
+    <!--Custom Colors-->
+    <color name="appBackground">#b2d8d8</color>
+    <color name="tileBackground">#008080</color>
 </resources>
