@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10px"
+        android:layout_marginBottom="6.7dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
@@ -41,7 +41,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20px"
+        android:layout_margin="5dp"
         android:layout_weight="2"
         android:baselineAligned="false"
         android:orientation="horizontal">
@@ -59,7 +59,7 @@
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
                 android:contentDescription="Steps"
-                android:paddingTop="25px"
+                android:paddingTop="5dp"
                 app:srcCompat="@drawable/footsteps" />
 
             <TextView
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:paddingBottom="25px"
+                android:paddingBottom="5dp"
                 android:text="6473"
                 android:textAlignment="center"
                 android:textColor="@android:color/white" />
@@ -87,7 +87,7 @@
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
                 android:contentDescription="Heart"
-                android:paddingTop="25px"
+                android:paddingTop="5dp"
                 app:srcCompat="@drawable/heart" />
 
             <TextView
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:paddingBottom="25px"
+                android:paddingBottom="5dp"
                 android:text="88"
                 android:textAlignment="center"
                 android:textColor="@android:color/white" />
@@ -107,83 +107,175 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15px"
+        android:layout_margin="5dp"
         android:layout_weight="2"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/bStatistics"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="15px"
             android:layout_weight="0.5"
-            android:background="@color/tileBackground"
-            android:contentDescription="Statistics"
-            android:paddingTop="25px"
-            android:paddingBottom="25px"
-            app:srcCompat="@drawable/statistics" />
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/bDiary"
+            <ImageButton
+                android:id="@+id/bStatistics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:contentDescription="Statistics"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                app:srcCompat="@drawable/statistics" />
+
+            <TextView
+                android:id="@+id/tStatistics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:text="Statistics"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15px"
             android:layout_weight="0.5"
-            android:background="@color/tileBackground"
-            android:contentDescription="Diary"
-            android:paddingTop="25px"
-            android:paddingBottom="25px"
-            app:srcCompat="@drawable/diary" />
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/bDiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:contentDescription="Diary"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                app:srcCompat="@drawable/diary" />
+
+            <TextView
+                android:id="@+id/tDiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15px"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:text="Diary"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20px"
-        android:layout_marginBottom="10px"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_weight="2"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/bInfo"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="15px"
             android:layout_weight="0.5"
-            android:background="@color/tileBackground"
-            android:contentDescription="Info"
-            android:paddingTop="25px"
-            android:paddingBottom="25px"
-            app:srcCompat="@drawable/info" />
+            android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/bSettings"
+            <ImageButton
+                android:id="@+id/bInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:contentDescription="Info"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                app:srcCompat="@drawable/info" />
+
+            <TextView
+                android:id="@+id/tInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:text="Information"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15px"
             android:layout_weight="0.5"
-            android:background="@color/tileBackground"
-            android:contentDescription="Settings"
-            app:srcCompat="@drawable/settings" />
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/bSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:contentDescription="Settings"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                app:srcCompat="@drawable/settings" />
+
+            <TextView
+                android:id="@+id/tSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15px"
+                android:layout_weight="0.5"
+                android:background="@color/tileBackground"
+                android:text="Settings"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20px"
-        android:layout_marginBottom="10px"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="3dp"
         android:layout_weight="3"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/bPet"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/tileBackground"
-            android:paddingBottom="10px"
-            app:srcCompat="@drawable/gunterv2" />
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/bPet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/tileBackground"
+                android:paddingBottom="3dp"
+                app:srcCompat="@drawable/gunterv2" />
+
+            <TextView
+                android:id="@+id/tPet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/tileBackground"
+                android:text="Pet"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
