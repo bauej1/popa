@@ -8,12 +8,8 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.util.Log;
-
 import com.mbientlab.metawear.MetaWearBoard;
 import com.mbientlab.metawear.android.BtleService;
-
-import bolts.Continuation;
-import bolts.Task;
 
 public class SensorService implements ServiceConnection {
 
@@ -51,27 +47,20 @@ public class SensorService implements ServiceConnection {
 
         board = serviceBinder.getMetaWearBoard(remoteDevice);
 
-        //Replace with lambda expression!
-        board.connectAsync().continueWith(new Continuation<Void, Void>() {
-            @Override
-            public Void then(Task<Void> task) throws Exception {
-                if (task.isFaulted()) {
-                    Log.i("SensorService: ", "Failed to connect");
-                } else {
-                    Log.i("SensorService: ", "Connected");
-                }
-                return null;
+        board.connectAsync().continueWith(task -> {
+            if (task.isFaulted()) {
+                Log.i("SensorService: ", "Failed to connect");
+            } else {
+                Log.i("SensorService: ", "Connected");
             }
+            return null;
         });
     }
 
     public void disconnectSensor(){
-        board.disconnectAsync().continueWith(new Continuation<Void, Void>() {
-            @Override
-            public Void then(Task<Void> task) throws Exception {
-                Log.i("SensorService: ", "Disconnected");
-                return null;
-            }
+        board.disconnectAsync().continueWith(task -> {
+            Log.i("SensorService: ", "Disconnected");
+            return null;
         });
     }
 }

@@ -8,6 +8,8 @@ import android.widget.ImageButton;
 
 public class HomeActivity extends AppCompatActivity {
 
+    Intent intent = null;
+
 //    ImageButton bStatistics = (ImageButton) findViewById(R.id.bStatistics);
 //    ImageButton bDiary = (ImageButton) findViewById(R.id.bDiary);
 //    ImageButton bInfo = (ImageButton) findViewById(R.id.bInfo);
@@ -21,13 +23,9 @@ public class HomeActivity extends AppCompatActivity {
 
         bSettings = (ImageButton) findViewById(R.id.bSettings);
 
-        //Replace with lambda expression!
-        bSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), SettingsActivity.class);
-                startActivity(intent);
-            }
+        bSettings.setOnClickListener(v -> {
+            intent = new Intent(v.getContext(), SettingsActivity.class);
+            startActivity(intent);
         });
     }
 
