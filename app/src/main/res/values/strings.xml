@@ -6,4 +6,11 @@
     <string name="settings">Settings</string>
     <string name="pet">Pet</string>
     <string name="information">Information</string>
+    <string name="sensor">Sensor</string>
+    <string name="status_label">Status:</string>
+    <string name="mac_address_label">MAC:</string>
+    <string name="mac_address">E0:CE:8F:84:D5:4F</string>
+    <string name="connect_sensor">Connect Sensor</string>
+    <string name="connected">Connected</string>
+    <string name="not_connected">Not Connected</string>
 </resources>
