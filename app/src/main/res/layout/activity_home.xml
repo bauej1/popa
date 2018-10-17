@@ -20,7 +20,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:contentDescription="Battery"
             app:srcCompat="@drawable/battery" />
 
         <TextView
@@ -28,14 +27,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="POPA" />
+            android:text="@string/app_name" />
 
         <TextView
             android:id="@+id/sync"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="sync" />
+            android:text="@string/sync" />
     </LinearLayout>
 
     <LinearLayout
@@ -58,7 +57,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:contentDescription="Steps"
                 android:paddingTop="5dp"
                 app:srcCompat="@drawable/footsteps" />
 
@@ -86,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:contentDescription="Heart"
+                android:contentDescription="Pulse"
                 android:paddingTop="5dp"
                 app:srcCompat="@drawable/heart" />
 
@@ -124,7 +122,6 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:contentDescription="Statistics"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 app:srcCompat="@drawable/statistics" />
@@ -136,7 +133,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:text="Statistics"
+                android:text="@string/statistics"
                 android:textAlignment="center"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -154,7 +151,6 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:contentDescription="Diary"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 app:srcCompat="@drawable/diary" />
@@ -166,7 +162,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:text="Diary"
+                android:text="@string/diary"
                 android:textAlignment="center"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -193,7 +189,6 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:contentDescription="Info"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 app:srcCompat="@drawable/info" />
@@ -205,7 +200,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:text="Information"
+                android:text="@string/information"
                 android:textAlignment="center"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -223,7 +218,6 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:contentDescription="Settings"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 app:srcCompat="@drawable/settings" />
@@ -235,7 +229,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
                 android:background="@color/tileBackground"
-                android:text="Settings"
+                android:text="@string/settings"
                 android:textAlignment="center"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -263,7 +257,7 @@
                 android:layout_weight="1"
                 android:background="@color/tileBackground"
                 android:paddingBottom="3dp"
-                app:srcCompat="@drawable/gunterv2" />
+                app:srcCompat="@drawable/gunter" />
 
             <TextView
                 android:id="@+id/tPet"
@@ -271,7 +265,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/tileBackground"
-                android:text="Pet"
+                android:text="@string/pet"
                 android:textAlignment="center"
                 android:textSize="18sp" />
         </LinearLayout>
