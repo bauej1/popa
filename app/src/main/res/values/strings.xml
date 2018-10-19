@@ -13,4 +13,8 @@
     <string name="connect_sensor">Connect Sensor</string>
     <string name="connected">Connected</string>
     <string name="not_connected">Not Connected</string>
+    <string name="smartwatch">Smart Watch</string>
+    <string name="connect_watch">Connect Watch</string>
+    <string name="general">General</string>
+    <string name="activate_pet">Activate pet mode</string>
 </resources>

@@ -10,6 +10,7 @@ import android.os.IBinder;
 import android.util.Log;
 import com.mbientlab.metawear.MetaWearBoard;
 import com.mbientlab.metawear.android.BtleService;
+import com.mbientlab.metawear.module.Led;
 
 public class SensorService implements ServiceConnection {
 
@@ -25,6 +26,7 @@ public class SensorService implements ServiceConnection {
 
     public void attachService(){
         context.bindService(new Intent(context, BtleService.class), this, Context.BIND_AUTO_CREATE);
+        context.startService(new Intent(context, BtleService.class));
     }
 
     //maybe not needed..
@@ -41,7 +43,7 @@ public class SensorService implements ServiceConnection {
     public void onServiceDisconnected(ComponentName componentName) {
     }
 
-    public void retrieveBoard(){
+    public void retrieveBoard() {
         final BluetoothManager btManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
         final BluetoothDevice remoteDevice = btManager.getAdapter().getRemoteDevice(SENSOR_MAC_ADDRESS);
 
@@ -52,6 +54,9 @@ public class SensorService implements ServiceConnection {
                 Log.i("SensorService: ", "Failed to connect");
             } else {
                 Log.i("SensorService: ", "Connected");
+                Led led = board.getModule(Led.class);
+                led.editPattern(Led.Color.GREEN);
+                led.play();
             }
             return null;
         });
@@ -62,5 +67,13 @@ public class SensorService implements ServiceConnection {
             Log.i("SensorService: ", "Disconnected");
             return null;
         });
+    }
+
+    public MetaWearBoard getBoard(){
+        return board;
+    }
+
+    public Led getLedClass(){
+        return board.getModule(Led.class);
     }
 }

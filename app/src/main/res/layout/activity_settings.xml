@@ -36,69 +36,213 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tSensorLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sensor"
-        android:textColor="@color/tileBackground" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_margin="5dp"
+        android:background="@drawable/custom_background"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tStatusLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/status_label"
-            android:textColor="@color/tileBackground" />
-
-        <TextView
-            android:id="@+id/tStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/not_connected"
-            android:textColor="@color/tileBackground" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tMacLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/mac_address_label"
-            android:textColor="@color/tileBackground" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/mac_address"
-            android:textColor="@color/tileBackground" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Switch
-            android:id="@+id/swConnect"
+            android:id="@+id/tGeneralLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/connect_sensor"
-            android:checked="false"
-            android:textColor="@color/tileBackground" />
+            android:layout_margin="5dp"
+            android:text="@string/general"
+            android:textColor="@color/appBackground"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/swActivatePet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:text="@string/activate_pet"
+                android:textColor="@color/appBackground"
+                android:textStyle="bold"
+                android:theme="@style/SwitchCompatTheme" />
+        </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/custom_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tSensorLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/sensor"
+            android:textColor="@color/appBackground"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tMacLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:text="@string/mac_address_label"
+                android:textColor="@color/appBackground"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tMac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_weight="0.95"
+                android:text="@string/mac_address"
+                android:textColor="@color/appBackground" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tStatusLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:text="@string/status_label"
+                android:textColor="@color/appBackground"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.95"
+                android:text="@string/not_connected"
+                android:textColor="@color/appBackground" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/swConnectSensor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:text="@string/connect_sensor"
+                android:textColor="@color/appBackground"
+                android:textStyle="bold"
+                android:theme="@style/SwitchCompatTheme" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/custom_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tSmartWatchLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/smartwatch"
+            android:textColor="@color/appBackground"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tMacWatchLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:text="@string/mac_address_label"
+                android:textColor="@color/appBackground"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tMacWatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_weight="0.95"
+                android:text="@string/mac_address"
+                android:textColor="@color/appBackground" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tStatusWatchLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:text="@string/status_label"
+                android:textColor="@color/appBackground"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tStatusWatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.95"
+                android:text="@string/not_connected"
+                android:textColor="@color/appBackground" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/swConnectWatch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:text="@string/connect_watch"
+                android:textColor="@color/appBackground"
+                android:textStyle="bold"
+                android:theme="@style/SwitchCompatTheme" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>
