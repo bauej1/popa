@@ -18,6 +18,7 @@ import com.mbientlab.metawear.data.AngularVelocity;
 import com.mbientlab.metawear.module.Led;
 import com.mbientlab.metawear.module.GyroBmi160;
 import com.mbientlab.metawear.module.GyroBmi160.OutputDataRate;
+import com.mbientlab.metawear.module.Haptic;
 
 /**
  * The Sensor Service offers all methods to interact with the mbientlab sensor.
@@ -32,21 +33,18 @@ public class SensorService implements ServiceConnection {
     private Led led;
     private GyroBmi160 gyro;
 
+    //Posture evaluation
+    private int evaluateCounter = 0;
+    private boolean initPosture = true;
+    private float initZ;
+    private float initY;
+    private float zTreshold;
+    private float yTreshold;
+
     public SensorService(Context ctxt){
         this.context = ctxt;
-    }
-
-    /**
-     * Attaches the ServiceConnection to the application.
-     */
-    public void attachService(){
         context.bindService(new Intent(context, BtleService.class), this, Context.BIND_AUTO_CREATE);
         context.startService(new Intent(context, BtleService.class));
-    }
-
-    //maybe not needed..
-    public void removeService(){
-        context.unbindService(this);
     }
 
     @Override
@@ -57,6 +55,7 @@ public class SensorService implements ServiceConnection {
 
     @Override
     public void onServiceDisconnected(ComponentName componentName) {
+
     }
 
     /**
@@ -78,7 +77,7 @@ public class SensorService implements ServiceConnection {
 
                 gyro = board.getModule(GyroBmi160.class);
                 gyro.configure()
-                        .odr(OutputDataRate.ODR_200_HZ)
+                        .odr(OutputDataRate.ODR_50_HZ)
                         .commit();
 
                 return gyro.angularVelocity().addRouteAsync(new RouteBuilder() {
@@ -87,12 +86,20 @@ public class SensorService implements ServiceConnection {
                         source.stream(new Subscriber() {
                             @Override
                             public void apply(Data data, Object... env) {
+
+                                float z = data.value(AngularVelocity.class).z();
+                                float y = data.value(AngularVelocity.class).y();
+
+                                if(initPosture){
+                                    initializePosture(z, y);
+                                    initPosture = false;
+                                }
+                                evaluatePosition(z, y);
                                 Log.i("Gyroscope Sensor: ", data.value(AngularVelocity.class).toString());
                             }
                         });
                     }
                 });
-
             }
             return null;
         });
@@ -118,11 +125,37 @@ public class SensorService implements ServiceConnection {
     }
 
     /**
-     * Returns the Gyroscope Module
-     *
-     * @return GyroBmi160
+     * This method evaluates on every reaction of the sensor if the position changed by more than 20%.
      */
-    public GyroBmi160 getGyro() {
-        return gyro;
+    private void evaluatePosition(float z, float y){
+        if(evaluateCounter == 100){
+            vibrate();
+            evaluateCounter = 0;
+        } else {
+            if((z - zTreshold) < initZ && (y - yTreshold) < initY){
+                evaluateCounter++;
+            }
+        }
+    }
+
+    /**
+     * Initializes the posture of the patient with y and z axis.
+     * @param z - Z-Axis
+     * @param y - Y-Axis
+     */
+    private void initializePosture(float z, float y){
+
+        initY = y;
+        initZ = z;
+
+        zTreshold = (initZ / 100) * 30;
+        yTreshold = (initY / 100) * 30;
+    }
+
+    /**
+     * Vibrate the board.
+     */
+    private void vibrate(){
+        board.getModule(Haptic.class).startBuzzer((short) 500);
     }
 }

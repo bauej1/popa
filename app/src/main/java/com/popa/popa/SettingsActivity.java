@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends Activity{
 
     Switch swConnect;
     TextView tStatus;
@@ -19,14 +19,11 @@ public class SettingsActivity extends Activity {
         swConnect = (Switch) findViewById(R.id.swConnectSensor);
         tStatus = (TextView) findViewById(R.id.tStatus);
 
-        sensorService = new SensorService(this);
-        sensorService.attachService();
-
         swConnect.setOnCheckedChangeListener((compoundButton, b) -> {
+
             if(compoundButton.isChecked()){
+                sensorService = new SensorService(this);
                 tStatus.setText(getResources().getString(R.string.connected));
-                sensorService.getGyro().angularVelocity().start();
-                sensorService.getGyro().start();
             } else {
                 sensorService.disconnectSensor();
                 tStatus.setText(getResources().getString(R.string.not_connected));
