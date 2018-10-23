@@ -1,4 +1,4 @@
-package com.popa.popa;
+package com.popa.popa.services;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;

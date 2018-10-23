@@ -1,9 +1,12 @@
-package com.popa.popa;
+package com.popa.popa.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.popa.popa.R;
+import com.popa.popa.services.SensorService;
 
 public class SettingsActivity extends Activity{
 
