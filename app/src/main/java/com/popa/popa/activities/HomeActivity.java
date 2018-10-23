@@ -1,21 +1,19 @@
 package com.popa.popa.activities;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageButton;
-
 import com.popa.popa.R;
+import com.popa.popa.database.popaDatabase;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private static final String DATABASE_NAME = "popaDb";
+    private popaDatabase popaDb;
     Intent intent = null;
-
-//    ImageButton bStatistics = (ImageButton) findViewById(R.id.bStatistics);
-//    ImageButton bDiary = (ImageButton) findViewById(R.id.bDiary);
-//    ImageButton bInfo = (ImageButton) findViewById(R.id.bInfo);
     ImageButton bSettings;
-//    ImageButton bPet = (ImageButton) findViewById(R.id.bPet);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +26,16 @@ public class HomeActivity extends AppCompatActivity {
             intent = new Intent(v.getContext(), SettingsActivity.class);
             startActivity(intent);
         });
+
+        createDB();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        //maybe destroy sensor connection too..?
+    /**
+     * Creates Database with the Room Persistance Library.
+     */
+    private void createDB(){
+        Room.databaseBuilder(getApplicationContext(), popaDatabase.class, DATABASE_NAME)
+                .fallbackToDestructiveMigration()
+                .build();
     }
 }
