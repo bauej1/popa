@@ -10,15 +10,19 @@ import android.os.IBinder;
 import android.util.Log;
 import com.mbientlab.metawear.Data;
 import com.mbientlab.metawear.MetaWearBoard;
+import com.mbientlab.metawear.Route;
 import com.mbientlab.metawear.Subscriber;
 import com.mbientlab.metawear.android.BtleService;
 import com.mbientlab.metawear.builder.RouteBuilder;
 import com.mbientlab.metawear.builder.RouteComponent;
-import com.mbientlab.metawear.data.AngularVelocity;
+import com.mbientlab.metawear.data.Acceleration;
+import com.mbientlab.metawear.module.AccelerometerBosch;
 import com.mbientlab.metawear.module.Led;
-import com.mbientlab.metawear.module.GyroBmi160;
-import com.mbientlab.metawear.module.GyroBmi160.OutputDataRate;
 import com.mbientlab.metawear.module.Haptic;
+import com.mbientlab.metawear.module.AccelerometerBmi160;
+import com.mbientlab.metawear.module.AccelerometerBmi160.OutputDataRate;
+import bolts.Continuation;
+import bolts.Task;
 
 /**
  * The Sensor Service offers all methods to interact with the mbientlab sensor.
@@ -31,15 +35,13 @@ public class SensorService implements ServiceConnection {
     private Context context;
     private MetaWearBoard board;
     private Led led;
-    private GyroBmi160 gyro;
+    private AccelerometerBmi160 acc;
 
     //Posture evaluation
     private int evaluateCounter = 0;
     private boolean initPosture = true;
-    private float initZ;
-    private float initY;
-    private float zTreshold;
-    private float yTreshold;
+    private float initX;
+    private float xTreshold;
 
     public SensorService(Context ctxt){
         this.context = ctxt;
@@ -55,7 +57,6 @@ public class SensorService implements ServiceConnection {
 
     @Override
     public void onServiceDisconnected(ComponentName componentName) {
-
     }
 
     /**
@@ -69,39 +70,45 @@ public class SensorService implements ServiceConnection {
         board = serviceBinder.getMetaWearBoard(remoteDevice);
 
         board.connectAsync().onSuccessTask(task -> {
-            if (task.isFaulted()) {
-                Log.i("SensorService: ", "Failed to connect");
-            } else {
-                Log.i("SensorService: ", "Connected");
-                playLed();
 
-                gyro = board.getModule(GyroBmi160.class);
-                gyro.configure()
+                acc = board.getModule(AccelerometerBmi160.class);
+                acc.configure()
                         .odr(OutputDataRate.ODR_50_HZ)
+                        .range(AccelerometerBosch.AccRange.AR_2G)
                         .commit();
 
-                return gyro.angularVelocity().addRouteAsync(new RouteBuilder() {
+                return acc.acceleration().addRouteAsync(new RouteBuilder() {
                     @Override
                     public void configure(RouteComponent source) {
                         source.stream(new Subscriber() {
                             @Override
                             public void apply(Data data, Object... env) {
 
-                                float z = data.value(AngularVelocity.class).z();
-                                float y = data.value(AngularVelocity.class).y();
+                                float x = data.value(Acceleration.class).x();
+
+                                Log.i("SensorService X-Position: ", x + "");
 
                                 if(initPosture){
-                                    initializePosture(z, y);
-                                    initPosture = false;
+                                    initializePosture(x );
                                 }
-                                evaluatePosition(z, y);
-                                Log.i("Gyroscope Sensor: ", data.value(AngularVelocity.class).toString());
+                                evaluatePosition(x);
                             }
                         });
                     }
                 });
+        }).continueWith(new Continuation<Route, Void>() {
+            @Override
+            public Void then(Task<Route> task) throws Exception {
+                if(task.isFaulted()){
+                    Log.i("SensorService: ", "Failed to connect");
+                    return null;
+                } else {
+                    Log.i("SensorService: ", "Connected");
+                    acc.acceleration().start();
+                    playLed();
+                }
+                return null;
             }
-            return null;
         });
     }
 
@@ -127,29 +134,25 @@ public class SensorService implements ServiceConnection {
     /**
      * This method evaluates on every reaction of the sensor if the position changed by more than 20%.
      */
-    private void evaluatePosition(float z, float y){
-        if(evaluateCounter == 100){
+    private void evaluatePosition(float x){
+        if(evaluateCounter == 300){
             vibrate();
             evaluateCounter = 0;
         } else {
-            if((z - zTreshold) < initZ && (y - yTreshold) < initY){
+            if(x < (x - xTreshold)){
                 evaluateCounter++;
             }
         }
     }
 
     /**
-     * Initializes the posture of the patient with y and z axis.
-     * @param z - Z-Axis
-     * @param y - Y-Axis
+     * Initializes the posture of the patient with the x axis.
+     * @param x - X-Axis
      */
-    private void initializePosture(float z, float y){
-
-        initY = y;
-        initZ = z;
-
-        zTreshold = (initZ / 100) * 30;
-        yTreshold = (initY / 100) * 30;
+    private void initializePosture(float x){
+        initPosture = false;
+        initX = x;
+        xTreshold = (initX / 100) * 25;
     }
 
     /**

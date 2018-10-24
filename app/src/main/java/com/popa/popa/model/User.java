@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 public class User {
 
     @NonNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int userId;
     private String username;
     private String email;
