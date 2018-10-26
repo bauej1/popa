@@ -5,8 +5,6 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-import java.util.Date;
-
 @Entity(foreignKeys = @ForeignKey(entity = User.class,
         parentColumns = "userId",
         childColumns = "dataId",
@@ -20,10 +18,6 @@ public class PostureData {
     private String timestamp;
     @NonNull
     private float x;
-    @NonNull
-    private float y;
-    @NonNull
-    private float z;
     private boolean posture;
 
     public PostureData(){
@@ -54,24 +48,6 @@ public class PostureData {
 
     public void setX(@NonNull float x) {
         this.x = x;
-    }
-
-    @NonNull
-    public float getY() {
-        return y;
-    }
-
-    public void setY(@NonNull float y) {
-        this.y = y;
-    }
-
-    @NonNull
-    public float getZ() {
-        return z;
-    }
-
-    public void setZ(@NonNull float z) {
-        this.z = z;
     }
 
     public boolean isPosture() {

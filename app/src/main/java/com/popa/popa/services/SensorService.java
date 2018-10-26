@@ -21,6 +21,9 @@ import com.mbientlab.metawear.module.Led;
 import com.mbientlab.metawear.module.Haptic;
 import com.mbientlab.metawear.module.AccelerometerBmi160;
 import com.mbientlab.metawear.module.AccelerometerBmi160.OutputDataRate;
+import com.popa.popa.database.popaDatabase;
+import com.popa.popa.model.PostureData;
+
 import bolts.Continuation;
 import bolts.Task;
 
@@ -36,6 +39,7 @@ public class SensorService implements ServiceConnection {
     private MetaWearBoard board;
     private Led led;
     private AccelerometerBmi160 acc;
+    private popaDatabase database;
 
     //Posture evaluation
     private int evaluateCounter = 0;
@@ -45,6 +49,7 @@ public class SensorService implements ServiceConnection {
 
     public SensorService(Context ctxt){
         this.context = ctxt;
+        database = popaDatabase.getDatabase(context);
         context.bindService(new Intent(context, BtleService.class), this, Context.BIND_AUTO_CREATE);
         context.startService(new Intent(context, BtleService.class));
     }
@@ -85,13 +90,15 @@ public class SensorService implements ServiceConnection {
                             public void apply(Data data, Object... env) {
 
                                 float x = data.value(Acceleration.class).x();
+                                String ts = data.formattedTimestamp();
 
-                                Log.i("SensorService X-Position: ", x + "");
+                                Log.i("SensorService Result: ", "X: " + x + " , Timestamp: " + ts);
 
                                 if(initPosture){
                                     initializePosture(x );
                                 }
                                 evaluatePosition(x);
+                                persist(x, ts);
                             }
                         });
                     }
@@ -132,7 +139,7 @@ public class SensorService implements ServiceConnection {
     }
 
     /**
-     * This method evaluates on every reaction of the sensor if the position changed by more than 20%.
+     * This method evaluates on every reaction of the sensor if the position changed by more than 25%.
      */
     private void evaluatePosition(float x){
         if(evaluateCounter == 300){
@@ -160,5 +167,30 @@ public class SensorService implements ServiceConnection {
      */
     private void vibrate(){
         board.getModule(Haptic.class).startBuzzer((short) 500);
+    }
+
+    /**
+     * On every sensor reaction the persist method hands the data to the DBController to persist the data in the RPL.
+     *
+     * @param x - X-Axis
+     * @param timestamp - Timestamp of the recorded data
+     */
+    private void persist(float x, String timestamp){
+        boolean goodPosture;
+
+        if(x < (x - xTreshold)){
+            goodPosture = false;
+        } else {
+            goodPosture = true;
+        }
+
+        PostureData pd = new PostureData();
+        pd.setTimestamp(timestamp);
+        pd.setX(x);
+        pd.setPosture(goodPosture);
+
+        new Thread(() -> {
+            database.daoAccess().insertPostureData(pd);
+        }).start();
     }
 }

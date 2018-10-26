@@ -10,8 +10,10 @@ import com.popa.popa.model.User;
 public interface DaoAccess {
     @Insert
     void insertNewUser(User user);
+
     @Insert
     void insertPostureData(PostureData postureData);
+
     @Query("SELECT * FROM PostureData WHERE timestamp > :timestamp")
     PostureData getPostureDataAfterTime (String timestamp);
 }
