@@ -39,7 +39,7 @@
             android:textSize="15dp" />
 
         <EditText
-            android:id="@+id/mail"
+            android:id="@+id/tMail"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -60,7 +60,7 @@
             android:textSize="15dp" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/tPassword"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -78,7 +78,7 @@
         android:paddingTop="30dp">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/bSignup"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -86,7 +86,7 @@
             android:text="@string/signup" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/bLogin"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
