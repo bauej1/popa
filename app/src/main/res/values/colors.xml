@@ -7,6 +7,6 @@
     <color name="colorWatermark">#64af1960</color>
 
     <!--Custom Colors-->
-    <color name="appBackground">#b2d8d8</color>
+    <color name="appBackground">#e5fafa</color>
     <color name="tileBackground">#008080</color>
 </resources>

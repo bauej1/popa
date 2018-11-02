@@ -10,37 +10,47 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginBottom="6.7dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/iBattery"
+        <ImageButton
+            android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3"
+            android:layout_weight="0.1"
+            android:background="@color/appBackground"
+            android:padding="5dp"
+            android:textAlignment="viewStart"
+            app:srcCompat="@drawable/reload" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:text="POPA"
+            android:textAlignment="center"
+            android:textColor="@color/tileBackground"
+            android:textSize="35dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:background="@color/appBackground"
             app:srcCompat="@drawable/battery" />
 
-        <TextView
-            android:id="@+id/popa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/app_name" />
-
-        <TextView
-            android:id="@+id/sync"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/sync" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
         android:layout_weight="2"
         android:baselineAligned="false"
         android:orientation="horizontal">
@@ -54,22 +64,25 @@
             <ImageButton
                 android:id="@+id/bSteps"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="90dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/maintop_background"
                 android:paddingTop="5dp"
                 app:srcCompat="@drawable/footsteps" />
 
             <TextView
                 android:id="@+id/tSteps"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/mainbottom_background"
                 android:paddingBottom="5dp"
                 android:text="6473"
                 android:textAlignment="center"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,9 +94,10 @@
             <ImageButton
                 android:id="@+id/bHeart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="90dp"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/maintop_background"
                 android:contentDescription="Pulse"
                 android:paddingTop="5dp"
                 app:srcCompat="@drawable/heart" />
@@ -91,13 +105,15 @@
             <TextView
                 android:id="@+id/tHeart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/mainbottom_background"
                 android:paddingBottom="5dp"
                 android:text="88"
                 android:textAlignment="center"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -105,7 +121,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
         android:layout_weight="2"
         android:orientation="horizontal">
 
@@ -118,10 +136,10 @@
             <ImageButton
                 android:id="@+id/bStatistics"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="90dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/maintop_background"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 app:srcCompat="@drawable/statistics" />
@@ -129,10 +147,10 @@
             <TextView
                 android:id="@+id/tStatistics"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/mainbottom_background"
                 android:text="@string/statistics"
                 android:textAlignment="center"
                 android:textSize="18sp" />
@@ -150,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/maintop_background"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 app:srcCompat="@drawable/diary" />
@@ -161,7 +179,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/mainbottom_background"
                 android:text="@string/diary"
                 android:textAlignment="center"
                 android:textSize="18sp" />
@@ -171,8 +189,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
         android:layout_weight="2"
         android:orientation="horizontal">
 
@@ -185,21 +204,21 @@
             <ImageButton
                 android:id="@+id/bInfo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="90dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/maintop_background"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                app:srcCompat="@drawable/info" />
+                app:srcCompat="@drawable/information" />
 
             <TextView
                 android:id="@+id/tInfo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/mainbottom_background"
                 android:text="@string/information"
                 android:textAlignment="center"
                 android:textSize="18sp" />
@@ -217,7 +236,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/maintop_background"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 app:srcCompat="@drawable/settings" />
@@ -228,7 +247,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
-                android:background="@color/tileBackground"
+                android:background="@drawable/mainbottom_background"
                 android:text="@string/settings"
                 android:textAlignment="center"
                 android:textSize="18sp" />
@@ -239,8 +258,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_weight="3"
         android:orientation="horizontal">
 
@@ -253,18 +274,18 @@
             <ImageButton
                 android:id="@+id/bPet"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="140dp"
                 android:layout_weight="1"
-                android:background="@color/tileBackground"
+                android:background="@drawable/maintop_background"
                 android:paddingBottom="3dp"
                 app:srcCompat="@drawable/gunter" />
 
             <TextView
                 android:id="@+id/tPet"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@color/tileBackground"
+                android:background="@drawable/mainbottom_background"
                 android:text="@string/pet"
                 android:textAlignment="center"
                 android:textSize="18sp" />
