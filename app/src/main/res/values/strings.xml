@@ -17,4 +17,5 @@
     <string name="connect_watch">Connect Watch</string>
     <string name="general">General</string>
     <string name="activate_pet">Activate pet mode</string>
+    <string name="yourBattlePet">Your battle pet</string>
 </resources>

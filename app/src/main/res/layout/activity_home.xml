@@ -153,6 +153,7 @@
                 android:background="@drawable/mainbottom_background"
                 android:text="@string/statistics"
                 android:textAlignment="center"
+                android:textColor="@color/appBackground"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -182,6 +183,7 @@
                 android:background="@drawable/mainbottom_background"
                 android:text="@string/diary"
                 android:textAlignment="center"
+                android:textColor="@color/appBackground"
                 android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
@@ -221,6 +223,7 @@
                 android:background="@drawable/mainbottom_background"
                 android:text="@string/information"
                 android:textAlignment="center"
+                android:textColor="@color/appBackground"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -250,6 +253,7 @@
                 android:background="@drawable/mainbottom_background"
                 android:text="@string/settings"
                 android:textAlignment="center"
+                android:textColor="@color/appBackground"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -278,7 +282,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/maintop_background"
                 android:paddingBottom="3dp"
-                app:srcCompat="@drawable/gunter" />
+                app:srcCompat="@drawable/guntersword" />
 
             <TextView
                 android:id="@+id/tPet"
@@ -286,8 +290,9 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/mainbottom_background"
-                android:text="@string/pet"
+                android:text="@string/yourBattlePet"
                 android:textAlignment="center"
+                android:textColor="@color/appBackground"
                 android:textSize="18sp" />
         </LinearLayout>
 
