@@ -18,4 +18,9 @@
     <string name="general">General</string>
     <string name="activate_pet">Activate pet mode</string>
     <string name="yourBattlePet">Your battle pet</string>
+    <string name="mail">Mail</string>
+    <string name="password">Password</string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Log In</string>
+
 </resources>
