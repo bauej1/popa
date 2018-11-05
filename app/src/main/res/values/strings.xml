@@ -22,5 +22,7 @@
     <string name="password">Password</string>
     <string name="signup">Sign Up</string>
     <string name="login">Log In</string>
+    <string name="q_gender">What is your gender?</string>
+    <string name="swipeInfo">Please swipe for the next question</string>
 
 </resources>

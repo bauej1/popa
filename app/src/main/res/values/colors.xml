@@ -9,4 +9,6 @@
     <!--Custom Colors-->
     <color name="appBackground">#e5fafa</color>
     <color name="tileBackground">#008080</color>
+    <color name="textColor">#7f7f7f</color>
+    <color name="textColorLight">#bababa</color>
 </resources>
