@@ -17,13 +17,13 @@
         <service android:name="com.mbientlab.metawear.android.BtleService" />
 
         <activity android:name=".activities.LogInActivity">
-        </activity>
-
-        <activity android:name=".activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.StartActivity">
         </activity>
 
         <activity

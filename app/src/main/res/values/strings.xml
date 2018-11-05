@@ -23,6 +23,13 @@
     <string name="signup">Sign Up</string>
     <string name="login">Log In</string>
     <string name="q_gender">What is your gender?</string>
+    <string name="q_age">How old are you?</string>
+    <string name="q_painLocation">Where do you have pain?</string>
     <string name="swipeInfo">Please swipe for the next question</string>
+    <string name="lowerBack">Lower back</string>
+    <string name="sacrum">Sacrum</string>
+    <string name="shoulderArea">Shoulder area</string>
+    <string name="otherArea">Other spine area</string>
+    <string name="noPain">No pain</string>
 
 </resources>
