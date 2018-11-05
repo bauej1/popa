@@ -8,6 +8,15 @@
     android:background="@color/appBackground"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="5dp"
+        android:text="@string/step1"
+        android:textColor="@color/textColorLight" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -59,7 +68,7 @@
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/swipeGif"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="140dp"
                 android:src="@drawable/swipe" />
 
             <TextView

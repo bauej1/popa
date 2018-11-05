@@ -8,28 +8,20 @@
     android:background="@color/appBackground"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:paddingTop="5dp"
-        android:text="@string/step2"
-        android:textColor="@color/textColorLight" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical"
         android:paddingTop="100dp">
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:paddingBottom="90dp"
-            android:text="@string/q_age"
+            android:paddingBottom="70dp"
+            android:text="@string/loginFinish"
             android:textAlignment="center"
             android:textColor="@color/textColor"
             android:textSize="27dp" />
@@ -48,34 +40,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:background="@color/appBackground"
-                app:srcCompat="@drawable/birthday_cake" />
+                app:srcCompat="@drawable/popa" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_weight="0.5"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:text="50"
-                android:textAlignment="center"
-                android:textColor="@color/textColor"
-                android:textSize="20dp" />
-
-            <SeekBar
-                android:id="@+id/seekBar"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:max="60"
-                android:paddingTop="10dp"
-                android:progressBackgroundTint="@color/textColor" />
         </LinearLayout>
 
     </LinearLayout>
