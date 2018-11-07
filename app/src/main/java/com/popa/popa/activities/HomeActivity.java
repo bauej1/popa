@@ -12,6 +12,7 @@ public class HomeActivity extends AppCompatActivity {
 
     Intent intent = null;
     ImageButton bSettings;
+    ImageButton bStatistics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +20,17 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         bSettings = (ImageButton) findViewById(R.id.bSettings);
+        bStatistics = (ImageButton) findViewById(R.id.bStatistics);
 
         bSettings.setOnClickListener(v -> {
             intent = new Intent(v.getContext(), SettingsActivity.class);
             startActivity(intent);
         });
+
+        bStatistics.setOnClickListener(v -> {
+            intent = new Intent(v.getContext(), StatisticsActivity.class);
+            startActivity(intent);
+        });
+
     }
 }

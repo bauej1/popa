@@ -3,13 +3,16 @@ package com.popa.popa.database;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import com.popa.popa.dao.DaoAccess;
+import com.popa.popa.model.DateConverter;
 import com.popa.popa.model.PostureData;
 import com.popa.popa.model.User;
 
-@Database(entities = {User.class, PostureData.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, PostureData.class}, version = 2, exportSchema = false)
+@TypeConverters({DateConverter.class})
 public abstract class popaDatabase extends RoomDatabase {
 
     private static popaDatabase instance;

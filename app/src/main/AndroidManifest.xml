@@ -29,5 +29,9 @@
             android:name=".activities.SettingsActivity">
         </activity>
 
+        <activity
+            android:name=".activities.StatisticsActivity">
+        </activity>
+
     </application>
 </manifest>

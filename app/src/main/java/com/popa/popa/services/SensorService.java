@@ -24,6 +24,8 @@ import com.mbientlab.metawear.module.AccelerometerBmi160.OutputDataRate;
 import com.popa.popa.database.popaDatabase;
 import com.popa.popa.model.PostureData;
 
+import java.util.Calendar;
+
 import bolts.Continuation;
 import bolts.Task;
 
@@ -32,7 +34,9 @@ import bolts.Task;
  */
 public class SensorService implements ServiceConnection {
 
-    private final String SENSOR_MAC_ADDRESS = "E0:CE:8F:84:D5:4F";
+    private final String SENSOR_MAC_ADDRESS_STICK_ON = "E0:CE:8F:84:D5:4F";
+    private final String SENSOR_MAC_ADDRESS_CLIP_ON = "C6:9B:12:3C:59:02";
+
 
     private BtleService.LocalBinder serviceBinder;
     private Context context;
@@ -70,7 +74,7 @@ public class SensorService implements ServiceConnection {
      */
     public void retrieveBoard() {
         final BluetoothManager btManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
-        final BluetoothDevice remoteDevice = btManager.getAdapter().getRemoteDevice(SENSOR_MAC_ADDRESS);
+        final BluetoothDevice remoteDevice = btManager.getAdapter().getRemoteDevice(SENSOR_MAC_ADDRESS_STICK_ON);
 
         board = serviceBinder.getMetaWearBoard(remoteDevice);
 
@@ -92,10 +96,10 @@ public class SensorService implements ServiceConnection {
                                 float x = data.value(Acceleration.class).x();
                                 String ts = data.formattedTimestamp();
 
-                                Log.i("SensorService Result: ", "X: " + x + " , Timestamp: " + ts);
+                                Log.d("SensorData: ", "X: " + x + " , Timestamp: " + ts);
 
                                 if(initPosture){
-                                    initializePosture(x );
+                                    initializePosture(x);
                                 }
                                 evaluatePosition(x);
                                 persist(x, ts);
@@ -107,12 +111,13 @@ public class SensorService implements ServiceConnection {
             @Override
             public Void then(Task<Route> task) throws Exception {
                 if(task.isFaulted()){
-                    Log.i("SensorService: ", "Failed to connect");
+                    Log.d("SensorService: ", "Failed to connect");
                     return null;
                 } else {
-                    Log.i("SensorService: ", "Connected");
+                    acc.start();
                     acc.acceleration().start();
                     playLed();
+                    Log.d("SensorService: ", "Connected");
                 }
                 return null;
             }
@@ -124,7 +129,7 @@ public class SensorService implements ServiceConnection {
      */
     public void disconnectSensor(){
         board.disconnectAsync().continueWith(task -> {
-            Log.i("SensorService: ", "Disconnected");
+            Log.d("SensorService: ", "Disconnected");
             return null;
         });
     }
@@ -184,12 +189,11 @@ public class SensorService implements ServiceConnection {
             goodPosture = true;
         }
 
-        PostureData pd = new PostureData();
-        pd.setTimestamp(timestamp);
-        pd.setX(x);
-        pd.setPosture(goodPosture);
-
         new Thread(() -> {
+            PostureData pd = new PostureData();
+            pd.setX(x);
+            pd.setTimestamp(Calendar.getInstance().getTime());
+            pd.setPosture(goodPosture);
             database.daoAccess().insertPostureData(pd);
         }).start();
     }
