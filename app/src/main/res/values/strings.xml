@@ -17,4 +17,29 @@
     <string name="connect_watch">Connect Watch</string>
     <string name="general">General</string>
     <string name="activate_pet">Activate pet mode</string>
+    <string name="yourBattlePet">Your battle pet</string>
+    <string name="mail">Mail</string>
+    <string name="password">Password</string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Log In</string>
+    <string name="q_gender">What is your gender?</string>
+    <string name="q_age">How old are you?</string>
+    <string name="q_painLocation">Where do you have pain?</string>
+    <string name="swipeInfo">Please swipe for the next question</string>
+    <string name="lowerBack">Lower back</string>
+    <string name="sacrum">Sacrum</string>
+    <string name="shoulderArea">Shoulder area</string>
+    <string name="otherArea">Other spine area</string>
+    <string name="noPain">No pain</string>
+    <string name="painToday">How is your pain today?</string>
+    <string name="scale">From 0 (best) to 10 (worst).</string>
+    <string name="scaleReverse">From 0 (worst) to 10 (best).</string>
+    <string name="moodToday">How is your mood today?</string>
+    <string name="step1">Step 1 of 5</string>
+    <string name="step2">Step 2 of 5</string>
+    <string name="step3">Step 3 of 5</string>
+    <string name="step4">Step 4 of 5</string>
+    <string name="step5">Step 5 of 5</string>
+    <string name="loginFinish">Thank you for your information. Now let us get started with POPA!</string>
+
 </resources>
