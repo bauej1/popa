@@ -30,10 +30,18 @@
         </activity>
 
         <activity android:name=".activities.PainLocationActivity" >
+
+        </activity>
+
+        <activity android:name=".activities.TodayPainActivity" >
+        </activity>
+
+        <activity android:name=".activities.TodayMoodActivity">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".activities.HomeActivity">
