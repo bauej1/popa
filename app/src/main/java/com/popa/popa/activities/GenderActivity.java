@@ -10,7 +10,7 @@ import com.popa.popa.R;
 
 import pl.droidsonroids.gif.GifImageView;
 
-public class StartActivity extends AppCompatActivity {
+public class GenderActivity extends AppCompatActivity {
 
     ImageButton buttonGenderFemale;
     ImageButton buttonGenderMale;
