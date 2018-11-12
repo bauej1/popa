@@ -3,6 +3,7 @@ package com.popa.popa.activities;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -135,17 +136,16 @@ public class StatisticsActivity extends AppCompatActivity {
         int from = 7 - weekday;
         int to = 7 - (weekday + 1);
 
-        Calendar cal = Calendar.getInstance();              //Calculate the beginning and end of a weekday
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        cal.add(Calendar.DAY_OF_YEAR, -from);
-        Date fromDate = new Date(cal.getTimeInMillis());
+
+
+        Date fromDate = getDateInWeek(from, false);
         Date toDate;
 
         if(weekday == 6){
-            toDate = Calendar.getInstance().getTime();
+            toDate = getDateInWeek(0, true);
         } else{
-            cal.add(Calendar.DAY_OF_YEAR, -to);
-            toDate = new Date(cal.getTimeInMillis());
+            toDate = getDateInWeek(to, false);
         }
 
         return getPostureByPercentage(fromDate, toDate);
@@ -166,7 +166,7 @@ public class StatisticsActivity extends AppCompatActivity {
                                                     .filter(pd -> pd.getTimestamp().after(fromDate) && pd.getTimestamp().before(toDate))
                                                     .collect(Collectors.toCollection(ArrayList::new));
         int max = tempList.size();
-        tempDate = fromDate;
+        tempDate = toDate;
 
         for(PostureData pd : tempList){
             if(pd.isPosture() == false){
@@ -182,6 +182,11 @@ public class StatisticsActivity extends AppCompatActivity {
             postureByPercentage[0] = 0f;
             postureByPercentage[1] = 0f;
         }
+        Log.d("POPATEST", "fromDate -->" + fromDate.toString() + " | toDate --> " + toDate.toString());
+        Log.d("POPATEST", "max -->" + max + "");
+        Log.d("POPATEST", "0 -->" + postureByPercentage[0] + "");
+        Log.d("POPATEST", "1 -->" + postureByPercentage[1] + "");
+        Log.d("POPATEST", "__________________________________________________________");
 
         return postureByPercentage;
     }
@@ -240,5 +245,22 @@ public class StatisticsActivity extends AppCompatActivity {
             stepChartLayout.setVisibility(View.VISIBLE);
             postureChartLayout.setVisibility(View.VISIBLE);
         }
+    }
+
+    /**
+     * Returns a Date Object on 00:00:00h.
+     * @param subtract - number of how many days back in the week the calendar should go.
+     * @return date - the date of the day in the week minus the subtract
+     */
+    private Date getDateInWeek(int subtract, boolean lastDay){
+        Calendar cal = Calendar.getInstance();
+
+        if (lastDay){ return cal.getTime(); }
+
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.add(Calendar.DAY_OF_YEAR, -subtract);
+        return new Date(cal.getTimeInMillis());
     }
 }
