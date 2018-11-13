@@ -17,7 +17,10 @@
         <service android:name="com.mbientlab.metawear.android.BtleService" />
 
         <activity android:name=".activities.LogInActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -26,7 +29,6 @@
 
         <activity
             android:name=".activities.AgeActivity">
-
         </activity>
 
         <activity android:name=".activities.PainLocationActivity" >
@@ -37,10 +39,7 @@
         </activity>
 
         <activity android:name=".activities.TodayMoodActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <activity

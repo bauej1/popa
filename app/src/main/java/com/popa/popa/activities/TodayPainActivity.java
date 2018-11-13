@@ -1,18 +1,23 @@
 package com.popa.popa.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.popa.popa.R;
+import com.popa.popa.model.GestureHandler;
 
-public class TodayPainActivity extends AppCompatActivity {
+public class TodayPainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
     TextView textPain;
     SeekBar seekBarPain;
     ImageView imageSmile;
+    GestureDetector gDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,7 @@ public class TodayPainActivity extends AppCompatActivity {
         textPain = (TextView) findViewById(R.id.textPain);
         seekBarPain = (SeekBar) findViewById(R.id.seekBarPain);
         imageSmile = (ImageView) findViewById(R.id.imageSmile);
+        gDetector = new GestureDetector(this);
 
         seekBarPain.setMax(10);
         seekBarPain.setProgress(0);
@@ -60,5 +66,52 @@ public class TodayPainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent firstMotion, MotionEvent secondMotion, float v, float v1) {
+        float firstX = firstMotion.getX();
+        float secondX = secondMotion.getX();
+
+        GestureHandler handler = GestureHandler.getInstance();
+
+        if ((firstX + 200) > secondX) {
+            //handler.swipeRight(this, AgeActivity.class);
+            startActivity(new Intent(this, TodayMoodActivity.class));
+        } else {
+            startActivity(new Intent(this, PainLocationActivity.class));
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent me) {
+        return gDetector.onTouchEvent(me);
     }
 }

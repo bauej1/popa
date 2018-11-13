@@ -23,6 +23,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -71,6 +72,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -93,6 +95,15 @@
             android:backgroundTint="@color/tileBackground"
             android:text="@string/login"
             android:textColor="@color/appBackground" />
+
+        <Button
+            android:id="@+id/resetPassword"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/appBackground"
+            android:text="@string/resetPassword"
+            android:textColor="@color/textColor" />
     </LinearLayout>
 
 </LinearLayout>

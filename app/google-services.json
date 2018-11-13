@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "646839517251",
+    "firebase_url": "https://popa-19b06.firebaseio.com",
+    "project_id": "popa-19b06",
+    "storage_bucket": "popa-19b06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646839517251:android:a23dd769333dbcf4",
+        "android_client_info": {
+          "package_name": "com.popa.popa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646839517251-62in53c3998i16mof1j2cuv7f0ilq0ak.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.popa.popa",
+            "certificate_hash": "67db55418905ff0805d09a424baae45643c13809"
+          }
+        },
+        {
+          "client_id": "646839517251-n9rnkphm87brb4clcanbdang7sdt9b39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVHTqq4lgf3gsEw5Y8B_LIY4Pox2Tdpxg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646839517251-n9rnkphm87brb4clcanbdang7sdt9b39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

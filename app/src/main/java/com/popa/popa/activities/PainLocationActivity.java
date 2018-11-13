@@ -1,19 +1,23 @@
 package com.popa.popa.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ToggleButton;
 
 import com.popa.popa.R;
 import com.popa.popa.model.BodyPain;
+import com.popa.popa.model.GestureHandler;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class PainLocationActivity extends AppCompatActivity {
+public class PainLocationActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
     ToggleButton shoulderButton;
     ToggleButton lowerBackButton;
@@ -23,6 +27,7 @@ public class PainLocationActivity extends AppCompatActivity {
     ImageView elementBody;
     ArrayList<BodyPain> bodyImageArray;
     ArrayList<BodyPain> filteredList;
+    GestureDetector gDetector;
 
 
     @Override
@@ -36,6 +41,7 @@ public class PainLocationActivity extends AppCompatActivity {
         otherAreaButton = (ToggleButton) findViewById(R.id.b_other);
         noPainButton = (ToggleButton) findViewById(R.id.b_noPain);
         elementBody = (ImageView) findViewById(R.id.elementBody);
+        gDetector = new GestureDetector(this);
 
         initializeBodyImages();
 
@@ -143,4 +149,50 @@ public class PainLocationActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent firstMotion, MotionEvent secondMotion, float v, float v1) {
+        float firstX = firstMotion.getX();
+        float secondX = secondMotion.getX();
+
+        GestureHandler handler = GestureHandler.getInstance();
+
+        if ((firstX + 200) > secondX) {
+            //handler.swipeRight(this, AgeActivity.class);
+            startActivity(new Intent(this, TodayPainActivity.class));
+        } else {
+            startActivity(new Intent(this, AgeActivity.class));
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent me) {
+        return gDetector.onTouchEvent(me);
+    }
 }

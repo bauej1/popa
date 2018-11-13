@@ -41,5 +41,7 @@
     <string name="step4">Step 4 of 5</string>
     <string name="step5">Step 5 of 5</string>
     <string name="loginFinish">Thank you for your information. Now let us get started with POPA!</string>
+    <string name="resetPassword">Reset Password</string>
+    <string name="logOut">Log Out</string>
 
 </resources>
