@@ -1,5 +1,15 @@
 package com.popa.popa.activities;
 
-public class PetActivity {
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import com.popa.popa.R;
+
+public class PetActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pet);
+    }
 
 }

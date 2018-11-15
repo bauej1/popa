@@ -54,5 +54,9 @@
             android:name=".activities.StatisticsActivity">
         </activity>
 
+        <activity
+            android:name=".activities.PetActivity">
+        </activity>
+
     </application>
 </manifest>

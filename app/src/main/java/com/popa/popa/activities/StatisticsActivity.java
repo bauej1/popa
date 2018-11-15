@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
+
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LegendEntry;
@@ -28,7 +30,6 @@ import java.util.stream.Collectors;
 public class StatisticsActivity extends AppCompatActivity {
 
     private View postureChartLayout;
-    private View stepChartLayout;
     private View loadingOverlay;
     private BarChart barChartTime;
     private XAxis xAxis;
@@ -40,14 +41,19 @@ public class StatisticsActivity extends AppCompatActivity {
     private popaDatabase database;
     private Date tempDate;
     private Legend legend;
+    private ImageButton bReload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
 
-        stepChartLayout = findViewById(R.id.stepChartLayout);
-        barChartTime = (BarChart) findViewById(R.id.barchart_posture_time);
+        barChartTime = findViewById(R.id.barchart_posture_time);
+
+        bReload = findViewById(R.id.bReload);
+        bReload.setOnClickListener(v -> {
+            loadData();
+        });
 
         xAxis = barChartTime.getXAxis();
         yAxis = barChartTime.getAxisLeft();
@@ -94,7 +100,7 @@ public class StatisticsActivity extends AppCompatActivity {
             lastSevenDays[i] = tempDate;
         }
 
-        barDataSet = new BarDataSet(barEntries, "Percentage of posture per day in 1 week");
+        barDataSet = new BarDataSet(barEntries, "Percentage of posture per day in one week");
         barDataSet.setDrawIcons(false);
         barDataSet.setColors(new int[]{R.color.badPosture, R.color.goodPosture}, this);
         barDataSet.setStackLabels(new String[]{"Good", "Bad"});
@@ -239,10 +245,8 @@ public class StatisticsActivity extends AppCompatActivity {
         postureChartLayout = findViewById(R.id.postureChartLayout);
 
         if(show == 0){
-            stepChartLayout.setVisibility(View.INVISIBLE);
             postureChartLayout.setVisibility(View.INVISIBLE);
         } else {
-            stepChartLayout.setVisibility(View.VISIBLE);
             postureChartLayout.setVisibility(View.VISIBLE);
         }
     }

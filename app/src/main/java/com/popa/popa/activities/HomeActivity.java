@@ -1,26 +1,26 @@
 package com.popa.popa.activities;
 
-import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import com.popa.popa.R;
-import com.popa.popa.database.popaDatabase;
 
 public class HomeActivity extends AppCompatActivity {
 
     Intent intent = null;
     ImageButton bSettings;
     ImageButton bStatistics;
+    ImageButton bPet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        bSettings = (ImageButton) findViewById(R.id.bSettings);
-        bStatistics = (ImageButton) findViewById(R.id.bStatistics);
+        bSettings = findViewById(R.id.bSettings);
+        bStatistics = findViewById(R.id.bStatistics);
+        bPet = findViewById(R.id.bPet);
 
         bSettings.setOnClickListener(v -> {
             intent = new Intent(v.getContext(), SettingsActivity.class);
@@ -32,5 +32,9 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        bPet.setOnClickListener(v -> {
+            intent = new Intent(v.getContext(), PetActivity.class);
+            startActivity(intent);
+        });
     }
 }
