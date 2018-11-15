@@ -15,16 +15,6 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="15"
-            android:background="@color/appBackground"
-            android:padding="5dp"
-            android:textAlignment="viewStart"
-            app:srcCompat="@drawable/reload" />
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="0dp"
@@ -34,14 +24,6 @@
             android:textAlignment="center"
             android:textColor="@color/tileBackground"
             android:textSize="35dp" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="15"
-            android:background="@color/appBackground"
-            app:srcCompat="@drawable/battery" />
 
     </LinearLayout>
 
