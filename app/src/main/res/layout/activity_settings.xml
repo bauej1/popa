@@ -13,19 +13,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/iBattery"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/popa2"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            app:srcCompat="@drawable/battery" />
-
-        <TextView
-            android:id="@+id/popa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/app_name" />
+            android:text="@string/app_name_big"
+            android:textAlignment="center"
+            android:textColor="@color/tileBackground"
+            android:textSize="35dp" />
 
     </LinearLayout>
 
@@ -50,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <Switch
@@ -62,6 +59,55 @@
                 android:textColor="@color/appBackground"
                 android:textStyle="bold"
                 android:theme="@style/SwitchCompatTheme" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tEmailLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:text="@string/email"
+                android:textColor="@color/appBackground"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="0.95"
+                android:text="jan.bauer@bfh.ch"
+                android:textColor="@color/appBackground" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tGenderLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:text="@string/gender"
+                android:textColor="@color/appBackground"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.95"
+                android:text="Male"
+                android:textColor="@color/appBackground" />
         </LinearLayout>
     </LinearLayout>
 
