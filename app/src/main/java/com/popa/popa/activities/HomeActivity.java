@@ -12,6 +12,7 @@ public class HomeActivity extends AppCompatActivity {
     ImageButton bSettings;
     ImageButton bStatistics;
     ImageButton bPet;
+    ImageButton bInformation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         bSettings = findViewById(R.id.bSettings);
         bStatistics = findViewById(R.id.bStatistics);
         bPet = findViewById(R.id.bPet);
+        bInformation = findViewById(R.id.bInfo);
 
         bSettings.setOnClickListener(v -> {
             intent = new Intent(v.getContext(), SettingsActivity.class);
@@ -34,6 +36,11 @@ public class HomeActivity extends AppCompatActivity {
 
         bPet.setOnClickListener(v -> {
             intent = new Intent(v.getContext(), PetActivity.class);
+            startActivity(intent);
+        });
+
+        bInformation.setOnClickListener(v -> {
+            intent = new Intent(v.getContext(), InformationActivity.class);
             startActivity(intent);
         });
     }
