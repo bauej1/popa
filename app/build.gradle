@@ -40,6 +40,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.firebase:firebase-client-android:2.3.1'
     implementation 'com.google.firebase:firebase-auth:16.0.1'
+    implementation 'com.google.android.gms:play-services-wearable:15.0.0'
+
 
 }
 

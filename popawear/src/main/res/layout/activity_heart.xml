@@ -23,38 +23,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40px"
-                android:text="Todays mood"
+                android:layout_marginBottom="20px"
+                android:text="Heartrate"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textMood"
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="10"
+                android:text="BPM"
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/text_bpm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="--"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="30sp" />
 
-            <SeekBar
-                android:id="@+id/seekBarMood"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10px"
-                android:maxHeight="6dip"
-                android:minHeight="6dip"
-                android:paddingLeft="30px"
-                android:paddingTop="10px"
-                android:paddingRight="30px"
-                android:paddingBottom="10px" />
-
             <Button
-                android:id="@+id/myButton"
+                android:id="@+id/btnStart"
                 android:layout_width="match_parent"
                 android:layout_height="77dp"
                 android:layout_marginTop="20px"
-                android:text="Send" />
+                android:text="Measure" />
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>
