@@ -43,5 +43,11 @@
     <string name="loginFinish">Thank you for your information. Now let us get started with POPA!</string>
     <string name="resetPassword">Reset Password</string>
     <string name="logOut">Log Out</string>
-
+    <string name="sensorData">Sensor Data</string>
+    <string name="posture_data">Sensor data</string>
+    <string name="app_name_big">POPA</string>
+    <string name="age">Age</string>
+    <string name="gender">Gender:</string>
+    <string name="cmkg">CM / KG</string>
+    <string name="email">E-Mail:</string>
 </resources>

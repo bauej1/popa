@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--System Colors-->
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#03af1960</color>
+    <color name="colorAccent">#af1960</color>
+    <color name="colorWatermark">#64af1960</color>
+
+    <!--Custom Colors-->
+    <color name="appBackground">#e5fafa</color>
+    <color name="tileBackground">#008080</color>
+    <color name="goodPosture">#6666FF</color>
+    <color name="badPosture">#ff0000</color>
+    <color name="textColor">#7f7f7f</color>
+    <color name="textColorLight">#bababa</color>
+</resources>
