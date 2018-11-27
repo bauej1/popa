@@ -8,6 +8,7 @@
 
     <!--Custom Colors-->
     <color name="appBackground">#e5fafa</color>
+    <color name="white">#ffffff</color>
     <color name="tileBackground">#008080</color>
     <color name="goodPosture">#6666FF</color>
     <color name="badPosture">#ff0000</color>

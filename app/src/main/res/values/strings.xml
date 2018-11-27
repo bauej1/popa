@@ -35,6 +35,7 @@
     <string name="scale">From 0 (best) to 10 (worst).</string>
     <string name="scaleReverse">From 0 (worst) to 10 (best).</string>
     <string name="moodToday">How is your mood today?</string>
+    <string name="sleep">How did you sleep last night?</string>
     <string name="step1">Step 1 of 5</string>
     <string name="step2">Step 2 of 5</string>
     <string name="step3">Step 3 of 5</string>
@@ -50,4 +51,6 @@
     <string name="gender">Gender:</string>
     <string name="cmkg">CM / KG</string>
     <string name="email">E-Mail:</string>
+    <string name="cancel">Cancel</string>
+    <string name="addDiaryEntry">Add</string>
 </resources>

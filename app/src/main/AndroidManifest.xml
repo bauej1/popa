@@ -61,6 +61,10 @@
         <activity
             android:name=".activities.InformationActivity">
         </activity>
+
+        <activity
+            android:name=".activities.DiaryActivity">
+        </activity>
         <service
             android:name=".services.ListenerService"
             android:enabled="true"
