@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.popa.popa.R;
 import com.popa.popa.services.SensorService;
 
@@ -18,6 +20,7 @@ public class SettingsActivity extends Activity{
 
     Switch swConnect;
     TextView tStatus;
+    TextView email;
     SensorService sensorService;
     Button logOut;
 
@@ -33,6 +36,7 @@ public class SettingsActivity extends Activity{
         swConnect = (Switch) findViewById(R.id.swConnectSensor);
         tStatus = (TextView) findViewById(R.id.tStatus);
         logOut = (Button) findViewById(R.id.logOutButton);
+        email = findViewById(R.id.tEmailSettings);
 
         swConnect.setOnCheckedChangeListener((compoundButton, b) -> {
 
@@ -55,7 +59,15 @@ public class SettingsActivity extends Activity{
             }
         });
 
+        getCurrentUserEmail();
 
+
+    }
+
+    private void getCurrentUserEmail(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String mail = user.getEmail();
+        email.setText(mail);
     }
 
     private void signOut() {
