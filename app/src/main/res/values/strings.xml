@@ -58,4 +58,13 @@
     <string name="clothes">How clothes can change your posture</string>
     <string name="dailyExercises">Daily Exercises</string>
     <string name="headstraight">Keep your head straight</string>
+    <string name="headstraightexpl">Your ears should be in line with your shoulders.</string>
+    <string name="sitback">Sit back</string>
+    <string name="sitbackexpl">Make sure your bum is all the way back in your chair.</string>
+    <string name="shoulderback">Pull your shoulders back</string>
+    <string name="shoulderbackexpl">Rolling your shoulders back and then down will open up your chest and improve your posture.</string>
+    <string name="strengthen">Strengthen your core, hips and shoulders</string>
+    <string name="strengthenexpl">Doing strengthening exercises will help you build up the muscles you need to keep your body upright and properly supported.</string>
+    <string name="walk">Walk</string>
+    <string name="walkexpl">If you work at a desk all day make sure to get up and walk around at least every 30 minutes. This will help relieve the stress that sitting places on the spine.</string>
 </resources>
