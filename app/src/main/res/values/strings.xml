@@ -67,4 +67,8 @@
     <string name="strengthenexpl">Doing strengthening exercises will help you build up the muscles you need to keep your body upright and properly supported.</string>
     <string name="walk">Walk</string>
     <string name="walkexpl">If you work at a desk all day make sure to get up and walk around at least every 30 minutes. This will help relieve the stress that sitting places on the spine.</string>
+    <string name="sneakers">1. Do wear sneakers</string>
+    <string name="sneakersexpl">Good and comfortable shoes are very supporting for a good and health posture. Be aware that shoes like high heels should be avoided.</string>
+    <string name="backpack">2. Do wear a backpack</string>
+    <string name="backpackexpl">The weight of your bag should be evenly distributed. Therefore, a backpack is recommended instead of a handbag.</string>
 </resources>

@@ -36,5 +36,17 @@ public class InformationActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+        clothes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View clothesView = inflater.inflate(R.layout.i_clothes, null, false);
+                AlertDialog.Builder builder = new AlertDialog.Builder(InformationActivity.this);
+                builder.setView(clothesView);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
     }
 }
