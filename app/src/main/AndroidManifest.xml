@@ -63,6 +63,10 @@
         </activity>
 
         <activity
+            android:name=".activities.ExerciseActivity">
+        </activity>
+
+        <activity
             android:name=".activities.DiaryActivity">
         </activity>
         <service

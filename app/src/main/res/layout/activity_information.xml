@@ -65,6 +65,14 @@
             android:paddingRight="20dp">
 
             <Button
+                android:id="@+id/bPosture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@color/tileBackground"
+                android:text="@string/postureImportance" />
+
+            <Button
                 android:id="@+id/bExercises"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,13 +96,6 @@
                 android:background="@color/tileBackground"
                 android:text="@string/clothes" />
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@color/tileBackground"
-                android:text="Button" />
         </LinearLayout>
 
     </LinearLayout>

@@ -53,10 +53,17 @@
     <string name="email">E-Mail:</string>
     <string name="cancel">Cancel</string>
     <string name="addDiaryEntry">Add</string>
-    <string name="informationStart">What do you want to know about posture? \nPlease select an information section form below:</string>
+    <string name="informationStart">What do you want to know about the posture? \nPlease select an information section form below:</string>
     <string name="tips">Tips to improve your posture</string>
     <string name="clothes">How clothes can change your posture</string>
     <string name="dailyExercises">Daily Exercises</string>
+    <string name="postureImportance">Why posture is so important</string>
+    <string name="postureImportance1">Having good posture is about more than looking good. It helps you to develop strength, flexibility, and
+        balance in your body. These can all lead to less muscle pain and more energy throughout the day. Proper posture also reduces stress on
+        your muscles and ligaments, which can reduce your risk of injury.</string>
+    <string name="postureImportance2">Improving your posture also helps you become more aware of your muscles, making it easier to correct your
+        own posture. As you work on your posture and become more aware of your body, you might even notice some imbalances or areas of tightness
+        you weren’t previously aware of.</string>
     <string name="headstraight">Keep your head straight</string>
     <string name="headstraightexpl">Your ears should be in line with your shoulders.</string>
     <string name="sitback">Sit back</string>
@@ -64,11 +71,14 @@
     <string name="shoulderback">Pull your shoulders back</string>
     <string name="shoulderbackexpl">Rolling your shoulders back and then down will open up your chest and improve your posture.</string>
     <string name="strengthen">Strengthen your core, hips and shoulders</string>
-    <string name="strengthenexpl">Doing strengthening exercises will help you build up the muscles you need to keep your body upright and properly supported.</string>
+    <string name="strengthenexpl">Doing strengthening exercises will help you build up the muscles you need to keep your body upright and
+        properly supported.</string>
     <string name="walk">Walk</string>
-    <string name="walkexpl">If you work at a desk all day make sure to get up and walk around at least every 30 minutes. This will help relieve the stress that sitting places on the spine.</string>
+    <string name="walkexpl">If you work at a desk all day make sure to get up and walk around at least every 30 minutes. This will help relieve
+        the stress that sitting places on the spine.</string>
     <string name="sneakers">1. Do wear sneakers</string>
-    <string name="sneakersexpl">Good and comfortable shoes are very supporting for a good and health posture. Be aware that shoes like high heels should be avoided.</string>
+    <string name="sneakersexpl">Good and comfortable shoes are very supporting for a good and health posture. Be aware that shoes like high
+        heels should be avoided.</string>
     <string name="backpack">2. Do wear a backpack</string>
     <string name="backpackexpl">The weight of your bag should be evenly distributed. Therefore, a backpack is recommended instead of a handbag.</string>
 </resources>
