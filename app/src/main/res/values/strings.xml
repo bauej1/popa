@@ -53,4 +53,9 @@
     <string name="email">E-Mail:</string>
     <string name="cancel">Cancel</string>
     <string name="addDiaryEntry">Add</string>
+    <string name="informationStart">What do you want to know about posture? \nPlease select an information section form below:</string>
+    <string name="tips">Tips to improve your posture</string>
+    <string name="clothes">How clothes can change your posture</string>
+    <string name="dailyExercises">Daily Exercises</string>
+    <string name="headstraight">Keep your head straight</string>
 </resources>

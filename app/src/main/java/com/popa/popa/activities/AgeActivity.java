@@ -37,6 +37,13 @@ public class AgeActivity extends AppCompatActivity implements GestureDetector.On
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progress = progress + 10;
                 textAge.setText(String.valueOf(progress));
+
+                Intent intBefore = getIntent();
+                Bundle bundle = intBefore.getExtras();
+                Intent ageIntent = new Intent(AgeActivity.this, PainLocationActivity.class);
+                bundle.putString("age", String.valueOf(progress));
+                ageIntent.putExtras(bundle);
+                startActivity(ageIntent);
             }
 
             @Override

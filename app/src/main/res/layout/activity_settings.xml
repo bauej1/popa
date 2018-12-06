@@ -82,7 +82,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_weight="0.95"
-                android:text="jan.bauer@bfh.ch"
                 android:textColor="@color/appBackground" />
         </LinearLayout>
 
