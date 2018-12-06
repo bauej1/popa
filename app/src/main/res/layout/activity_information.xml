@@ -96,6 +96,15 @@
                 android:background="@color/tileBackground"
                 android:text="@string/clothes" />
 
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:background="@color/textColorLight"
+                android:text="@string/tutorial"
+                android:textColor="@color/tileBackground" />
+
         </LinearLayout>
 
     </LinearLayout>
