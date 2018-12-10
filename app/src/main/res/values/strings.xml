@@ -149,6 +149,16 @@
     <string name="dfd5">Press firmly into your hands and keep your heels slightly lifted.</string>
     <string name="dfd6">Remain in this pose for up to 1 minute.</string>
     <string name="tutorial">Tutorial</string>
-
-
+    <string name="impressum">Impressum</string>
+    <string name="developers">Developers</string>
+    <string name="developersExpl">This application was developed within the module \"Clinical Applications for Tablets\" by the following students:</string>
+    <string name="aescj1">- Jan Philippe Aeschimann, aescj1@bfh.ch</string>
+    <string name="bauej1">- Jan Gabriel Bauer, bauej1@bfh.ch</string>
+    <string name="meiel6">- Lea Meier, meiel6@bfh.ch</string>
+    <string name="bfh">Bern University of Applied Sciences \nEngineering and Information Technology \nMedical Informatics \nHöheweg 80 \nCH-2502 Biel/Bienne</string>
+    <string name="sources">Sources</string>
+    <string name="sourcesExpl">The following sources were used for the development of this application.</string>
+    <string name="imprPostureImportant">https://www.healthline.com/health/posture-exercises</string>
+    <string name="imprDailyExercises">https://www.healthline.com/health/posture-exercises</string>
+    <string name="imprImprovePosture">https://www.pthealth.ca/blog/6-posture-fixes-that-will-set-you-straight/</string>
 </resources>
