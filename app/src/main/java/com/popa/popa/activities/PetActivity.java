@@ -18,7 +18,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.Wearable;
+import com.google.firebase.messaging.FirebaseMessagingService;
 import com.popa.popa.R;
+import com.popa.popa.services.MyFirebaseMessagingService;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -83,10 +85,17 @@ public class PetActivity extends AppCompatActivity implements
     //button listener
     @Override
     public void onClick(View v) {
-        String message = "Hello wearable " + num;
-        //Requires a new thread to avoid blocking the UI
-        new SendThread(datapath, message).start();
-        num++;
+
+        switch(v.getId()){
+            case R.id.button_startBattle:
+                new MyFirebaseMessagingService(this);
+                break;
+        }
+
+//        String message = "Hello wearable " + num;
+//        //Requires a new thread to avoid blocking the UI
+//        new SendThread(datapath, message).start();
+//        num++;
     }
 
     //method to create up a bundle to send to a handler via the thread below.
