@@ -44,6 +44,11 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
                 buttonGenderFemale.setImageAlpha(255);
                 textSwipe.setVisibility(View.VISIBLE);
                 gifSwipe.setVisibility(View.VISIBLE);
+                Intent genderIntent = new Intent(GenderActivity.this, AgeActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("gender", "female");
+                genderIntent.putExtras(bundle);
+                startActivity(genderIntent);
             }
         });
 
@@ -54,6 +59,11 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
                 buttonGenderMale.setImageAlpha(255);
                 textSwipe.setVisibility(View.VISIBLE);
                 gifSwipe.setVisibility(View.VISIBLE);
+                Intent genderIntent = new Intent(GenderActivity.this, AgeActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("gender", "male");
+                genderIntent.putExtras(bundle);
+                startActivity(genderIntent);
             }
         });
     }

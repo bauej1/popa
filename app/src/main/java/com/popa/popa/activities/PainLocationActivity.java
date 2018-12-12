@@ -84,6 +84,12 @@ public class PainLocationActivity extends AppCompatActivity implements GestureDe
                 getButtonValue();
             }
         });
+
+        Intent intBefore = getIntent();
+        Bundle bundle = intBefore.getExtras();
+        Intent painlocIntent = new Intent(PainLocationActivity.this, TodayPainActivity.class);
+        painlocIntent.putExtras(bundle);
+        startActivity(painlocIntent);
     }
 
     public void initializeBodyImages(){

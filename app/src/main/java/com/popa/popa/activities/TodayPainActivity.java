@@ -55,6 +55,13 @@ public class TodayPainActivity extends AppCompatActivity implements GestureDetec
                     id = getResources().getIdentifier("crying", "drawable", getPackageName());
                     imageSmile.setImageResource(id);
                 }
+
+                Intent intBefore = getIntent();
+                Bundle bundle = intBefore.getExtras();
+                Intent painIntent = new Intent(TodayPainActivity.this, TodayMoodActivity.class);
+                bundle.putString("pain", String.valueOf(progress));
+                painIntent.putExtras(bundle);
+                startActivity(painIntent);
             }
 
             @Override
