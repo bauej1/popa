@@ -7,8 +7,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -23,7 +21,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.popa.popa.R;
-import com.popa.popa.activities.PetActivity;
 import com.popa.popa.model.Pet;
 
 import org.json.JSONException;
@@ -110,7 +107,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             comparePetStats();
         } else {
             splitRemoteStats(httpBody);
-            //storePetInSharedPreferences(pet);
             sendNotification(URL, getSendingData(pet, true), getApplicationContext());
         }
     }
@@ -248,10 +244,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     public int getRemoteStatsTemporarily(){
 
-        //SharedPreferences.Editor meinEditor;
         SharedPreferences meineSharedPreferences = getApplicationContext().getSharedPreferences("temp", MODE_PRIVATE);
 
-        //meinEditor = meineSharedPreferences.edit();
         if(meineSharedPreferences.contains("remoteTotal")){
             return meineSharedPreferences.getInt("remoteTotal", 0);
         }
