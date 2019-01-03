@@ -162,4 +162,5 @@
     <string name="imprDailyExercises">https://www.healthline.com/health/posture-exercises</string>
     <string name="imprImprovePosture">https://www.pthealth.ca/blog/6-posture-fixes-that-will-set-you-straight/</string>
     <string name="nextHint">Next Hint</string>
+    <string name="skipTutorial">Skip Tutorial</string>
 </resources>

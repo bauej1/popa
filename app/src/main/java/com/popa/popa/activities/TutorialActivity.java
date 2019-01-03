@@ -1,5 +1,6 @@
 package com.popa.popa.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,8 +16,12 @@ import java.util.ArrayList;
 public class TutorialActivity extends AppCompatActivity {
 
     private Button bNextHint;
+    private Button bSkip;
     private ImageView ivSpeech;
     private ArrayList<ImageView> hints;
+
+    Bundle bundle;
+    Intent intent;
 
     /**
      * Counts which hint is currently shown for the user
@@ -28,8 +33,12 @@ public class TutorialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
 
+        Intent intentBefore = getIntent();
+        bundle = intentBefore.getExtras();
+
         init();
         initHints();
+        showNextHint();
     }
 
     /**
@@ -38,9 +47,14 @@ public class TutorialActivity extends AppCompatActivity {
     private void init(){
         this.bNextHint = findViewById(R.id.bNextHint);
         this.ivSpeech = findViewById(R.id.ivSpeech);
+        this.bSkip = findViewById(R.id.bSkip);
 
         bNextHint.setOnClickListener(event -> {
             showNextHint();
+        });
+
+        bSkip.setOnClickListener(event ->{
+            moveToHome(bundle);
         });
     }
 
@@ -87,8 +101,10 @@ public class TutorialActivity extends AppCompatActivity {
      */
     private void showNextHint(){
 
-        if(bubbleCounter >= hints.size()){
-            return;
+        if(bubbleCounter >= hints.size()-1){
+            moveToHome(bundle);
+            bubbleCounter = 0;
+            finish();
         }
 
         ImageView i = hints.get(bubbleCounter);
@@ -99,6 +115,16 @@ public class TutorialActivity extends AppCompatActivity {
         ivSpeech.setAnimation(aniFade);
 
         ++bubbleCounter;
+    }
+
+    private void moveToHome(Bundle bundle){
+        Intent intent = new Intent(this, HomeActivity.class);
+
+        if(bundle != null){
+            intent.putExtras(bundle);
+        }
+
+        startActivity(intent);
     }
 
     @Override

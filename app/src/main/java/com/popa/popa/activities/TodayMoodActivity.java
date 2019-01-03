@@ -62,7 +62,7 @@ public class TodayMoodActivity extends AppCompatActivity implements GestureDetec
                     imageMood.setImageResource(id);
                 }
 
-                intent = new Intent(TodayMoodActivity.this, HomeActivity.class);
+                intent = new Intent(TodayMoodActivity.this, TutorialActivity.class);
                 bundle.putString("mood", String.valueOf(progress));
                 intent.putExtras(bundle);
             }
