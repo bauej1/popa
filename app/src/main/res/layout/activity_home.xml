@@ -49,9 +49,9 @@
                 android:layout_height="90dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/maintop_background"
+                android:background="@drawable/maintop_background_light"
                 android:paddingTop="5dp"
-                app:srcCompat="@drawable/footsteps" />
+                app:srcCompat="@drawable/footsteps_dark" />
 
             <TextView
                 android:id="@+id/tSteps"
@@ -59,11 +59,11 @@
                 android:layout_height="40dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/mainbottom_background"
+                android:background="@drawable/mainbottom_background_light"
                 android:paddingBottom="5dp"
                 android:text="6473"
                 android:textAlignment="center"
-                android:textColor="@android:color/white"
+                android:textColor="@color/tileBackground"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -79,10 +79,10 @@
                 android:layout_height="90dp"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/maintop_background"
+                android:background="@drawable/maintop_background_light"
                 android:contentDescription="Pulse"
                 android:paddingTop="5dp"
-                app:srcCompat="@drawable/heart" />
+                app:srcCompat="@drawable/heart_dark" />
 
             <TextView
                 android:id="@+id/tHeart"
@@ -90,11 +90,11 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/mainbottom_background"
+                android:background="@drawable/mainbottom_background_light"
                 android:paddingBottom="5dp"
                 android:text="88"
                 android:textAlignment="center"
-                android:textColor="@android:color/white"
+                android:textColor="@color/tileBackground"
                 android:textSize="18sp" />
         </LinearLayout>
 

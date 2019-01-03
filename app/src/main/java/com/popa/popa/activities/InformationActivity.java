@@ -18,6 +18,7 @@ public class InformationActivity extends AppCompatActivity {
     Button exercises;
     Button tips;
     Button clothes;
+    Button tutorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class InformationActivity extends AppCompatActivity {
         exercises = findViewById(R.id.bExercises);
         tips = findViewById(R.id.bTips);
         clothes = findViewById(R.id.bClothes);
+        tutorial = findViewById(R.id.bTutorial);
 
         posture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +70,11 @@ public class InformationActivity extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
+        });
+
+        tutorial.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), TutorialActivity.class);
+            startActivity(intent);
         });
 
 

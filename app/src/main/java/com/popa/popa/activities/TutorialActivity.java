@@ -59,6 +59,26 @@ public class TutorialActivity extends AppCompatActivity {
         imageView = new ImageView(this);
         imageView.setImageResource(R.drawable.speechbubble2);
         hints.add(imageView);
+
+        imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.speechbubble3);
+        hints.add(imageView);
+
+        imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.speechbubble4);
+        hints.add(imageView);
+
+        imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.speechbubble5);
+        hints.add(imageView);
+
+        imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.speechbubble6);
+        hints.add(imageView);
+
+        imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.speechbubble7);
+        hints.add(imageView);
     }
 
     /**
@@ -79,5 +99,12 @@ public class TutorialActivity extends AppCompatActivity {
         ivSpeech.setAnimation(aniFade);
 
         ++bubbleCounter;
+    }
+
+    @Override
+    public void onBackPressed(){
+        bubbleCounter = 0;
+        super.onBackPressed();
+        finish();
     }
 }
