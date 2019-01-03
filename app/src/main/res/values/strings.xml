@@ -47,7 +47,7 @@
     <string name="sensorData">Sensor Data</string>
     <string name="posture_data">Sensor data</string>
     <string name="app_name_big">POPA</string>
-    <string name="age">Age</string>
+    <string name="age">Age:</string>
     <string name="gender">Gender:</string>
     <string name="cmkg">CM / KG</string>
     <string name="email">E-Mail:</string>

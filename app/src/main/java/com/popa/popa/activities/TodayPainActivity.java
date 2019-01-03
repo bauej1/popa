@@ -19,10 +19,16 @@ public class TodayPainActivity extends AppCompatActivity implements GestureDetec
     ImageView imageSmile;
     GestureDetector gDetector;
 
+    Intent intent;
+    Bundle bundle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.l_paintoday);
+
+        Intent intentBefore = getIntent();
+        bundle = intentBefore.getExtras();
 
         textPain = (TextView) findViewById(R.id.textPain);
         seekBarPain = (SeekBar) findViewById(R.id.seekBarPain);
@@ -56,12 +62,16 @@ public class TodayPainActivity extends AppCompatActivity implements GestureDetec
                     imageSmile.setImageResource(id);
                 }
 
-                Intent intBefore = getIntent();
-                Bundle bundle = intBefore.getExtras();
-                Intent painIntent = new Intent(TodayPainActivity.this, TodayMoodActivity.class);
+                intent = new Intent(TodayPainActivity.this, TodayMoodActivity.class);
                 bundle.putString("pain", String.valueOf(progress));
-                painIntent.putExtras(bundle);
-                startActivity(painIntent);
+                intent.putExtras(bundle);
+
+                //Intent intBefore = getIntent();
+                //Bundle bundle = intBefore.getExtras();
+                //Intent painIntent = new Intent(TodayPainActivity.this, TodayMoodActivity.class);
+                //bundle.putString("pain", String.valueOf(progress));
+                //painIntent.putExtras(bundle);
+                //startActivity(painIntent);
             }
 
             @Override
@@ -109,9 +119,10 @@ public class TodayPainActivity extends AppCompatActivity implements GestureDetec
 
         if ((firstX + 200) > secondX) {
             //handler.swipeRight(this, AgeActivity.class);
-            startActivity(new Intent(this, TodayMoodActivity.class));
+            startActivity(intent);
+            //startActivity(new Intent(this, TodayMoodActivity.class));
         } else {
-            startActivity(new Intent(this, PainLocationActivity.class));
+            //startActivity(new Intent(this, PainLocationActivity.class));
         }
 
         return true;
