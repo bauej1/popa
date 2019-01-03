@@ -91,7 +91,7 @@ public class MainActivity extends WearableActivity {
             seekBarControl();
             data[0] = num;
             counter++;
-            String message = "Users Mood is: " + num;
+            String message = "M" + num;
             //Requires a new thread to avoid blocking the UI
             new SendThread(datapath, message).start();
             myButton.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +113,7 @@ public class MainActivity extends WearableActivity {
             seekBarControl();
             data[0] = num;
             counter++;
-            String message = "Users pain is: " + num;
+            String message = "P" + num;
             //Requires a new thread to avoid blocking the UI
             new SendThread(datapath, message).start();
             myButton.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +127,7 @@ public class MainActivity extends WearableActivity {
             intent = new Intent(v.getContext(), HomeActivity.class);
             startActivity(intent);
             data[0] = num;
-            String message = "Users pain is: " + num;
+            String message = "S" + num;
             //Requires a new thread to avoid blocking the UI
             new SendThread(datapath, message).start();
         }

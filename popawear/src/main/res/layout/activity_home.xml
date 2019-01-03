@@ -41,7 +41,7 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="6443"
+                    android:text="N/A"
                     android:textColor="@android:color/black" />
 
                 <ImageView
@@ -57,7 +57,7 @@
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="80"
+                    android:text="N/A"
                     android:textColor="@android:color/black" />
             </LinearLayout>
 
