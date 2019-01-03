@@ -19,10 +19,16 @@ public class TodayMoodActivity extends AppCompatActivity implements GestureDetec
     ImageView imageMood;
     GestureDetector gDetector;
 
+    Intent intent;
+    Bundle bundle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.l_moodtoday);
+
+        Intent intentBefore = getIntent();
+        bundle = intentBefore.getExtras();
 
         textMood = (TextView) findViewById(R.id.textMood);
         seekBarMood = (SeekBar) findViewById(R.id.seekBarMood);
@@ -56,12 +62,9 @@ public class TodayMoodActivity extends AppCompatActivity implements GestureDetec
                     imageMood.setImageResource(id);
                 }
 
-                Intent intBefore = getIntent();
-                Bundle bundle = intBefore.getExtras();
-                Intent moodIntent = new Intent(TodayMoodActivity.this, HomeActivity.class);
+                intent = new Intent(TodayMoodActivity.this, TutorialActivity.class);
                 bundle.putString("mood", String.valueOf(progress));
-                moodIntent.putExtras(bundle);
-                startActivity(moodIntent);
+                intent.putExtras(bundle);
             }
 
             @Override
@@ -105,13 +108,9 @@ public class TodayMoodActivity extends AppCompatActivity implements GestureDetec
         float firstX = firstMotion.getX();
         float secondX = secondMotion.getX();
 
-        GestureHandler handler = GestureHandler.getInstance();
-
         if ((firstX + 200) > secondX) {
-            //handler.swipeRight(this, AgeActivity.class);
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(intent);
         } else {
-            startActivity(new Intent(this, TodayPainActivity.class));
         }
         return true;
     }

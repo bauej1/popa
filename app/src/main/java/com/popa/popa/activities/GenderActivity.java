@@ -22,6 +22,8 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
     GifImageView gifSwipe;
     GestureDetector gDetector;
 
+    Intent intent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -44,11 +46,10 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
                 buttonGenderFemale.setImageAlpha(255);
                 textSwipe.setVisibility(View.VISIBLE);
                 gifSwipe.setVisibility(View.VISIBLE);
-                Intent genderIntent = new Intent(GenderActivity.this, AgeActivity.class);
+                intent = new Intent(GenderActivity.this, AgeActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("gender", "female");
-                genderIntent.putExtras(bundle);
-                startActivity(genderIntent);
+                bundle.putString("gender", "Female");
+                intent.putExtras(bundle);
             }
         });
 
@@ -59,11 +60,10 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
                 buttonGenderMale.setImageAlpha(255);
                 textSwipe.setVisibility(View.VISIBLE);
                 gifSwipe.setVisibility(View.VISIBLE);
-                Intent genderIntent = new Intent(GenderActivity.this, AgeActivity.class);
+                intent= new Intent(GenderActivity.this, AgeActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("gender", "male");
-                genderIntent.putExtras(bundle);
-                startActivity(genderIntent);
+                bundle.putString("gender", "Male");
+                intent.putExtras(bundle);
             }
         });
     }
@@ -101,8 +101,7 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
         GestureHandler handler = GestureHandler.getInstance();
 
         if ((firstX + 200) > secondX) {
-            //handler.swipeRight(this, AgeActivity.class);
-            startActivity(new Intent(this, AgeActivity.class));
+            startActivity(intent);
         }
 
         return true;

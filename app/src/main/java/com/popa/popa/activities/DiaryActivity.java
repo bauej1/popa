@@ -72,7 +72,6 @@ public class DiaryActivity extends AppCompatActivity {
         addDiaryEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //setContentView(R.layout.diary_entry);
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 final View diaryEntryView = inflater.inflate(R.layout.diary_entry_test,null, false);
                 final SeekBar seekBarMood = diaryEntryView.findViewById(R.id.seekyBarMood);
@@ -147,7 +146,6 @@ public class DiaryActivity extends AppCompatActivity {
                 builder.setPositiveButton(R.string.addDiaryEntry, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //tvDiaryEntry.setText("Mood: " + seekBarMood.getProgress() + " Pain: " + seekBarPain.getProgress() + " Sleep: " + seekBarMood.getProgress());
                         integerData.add("Sleep: " + seekBarSleep.getProgress() + " Pain: " + seekBarPain.getProgress() + " Mood: " + seekBarMood.getProgress());
 
                         tvDiaryEntry.setText("");
@@ -166,7 +164,6 @@ public class DiaryActivity extends AppCompatActivity {
 
                 Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
                 negativeButton.setTextColor(Color.parseColor("#d3d3d3"));
-                //new AlertDialog.Builder(DiaryActivity.this).setView(diaryEntryView).setTitle("").show();
             }
         });
     }

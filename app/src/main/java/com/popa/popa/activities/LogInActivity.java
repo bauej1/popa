@@ -167,11 +167,9 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         if (user != null) {
             findViewById(R.id.layout1).setVisibility(View.GONE);
             findViewById(R.id.layout2).setVisibility(View.GONE);
-            //findViewById(R.id.forgotPassword).setEnabled(!user.isEmailVerified());
         } else {
             findViewById(R.id.layout1).setVisibility(View.VISIBLE);
             findViewById(R.id.layout2).setVisibility(View.VISIBLE);
-            //findViewById(R.id.forgotPassword).setVisibility(View.GONE);
         }
     }
 }

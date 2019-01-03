@@ -18,11 +18,17 @@ public class AgeActivity extends AppCompatActivity implements GestureDetector.On
     SeekBar seekBarAge;
     GestureDetector gDetector;
 
+    Intent intent;
+    Bundle bundle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.l_age);
+
+        Intent intentBefore = getIntent();
+        bundle = intentBefore.getExtras();
 
         textAge = (TextView) findViewById(R.id.text_age);
         seekBarAge = (SeekBar) findViewById(R.id.seekBarAge);
@@ -38,12 +44,9 @@ public class AgeActivity extends AppCompatActivity implements GestureDetector.On
                 progress = progress + 10;
                 textAge.setText(String.valueOf(progress));
 
-                Intent intBefore = getIntent();
-                Bundle bundle = intBefore.getExtras();
-                Intent ageIntent = new Intent(AgeActivity.this, PainLocationActivity.class);
+                intent = new Intent(AgeActivity.this, PainLocationActivity.class);
                 bundle.putString("age", String.valueOf(progress));
-                ageIntent.putExtras(bundle);
-                startActivity(ageIntent);
+                intent.putExtras(bundle);
             }
 
             @Override
@@ -86,13 +89,9 @@ public class AgeActivity extends AppCompatActivity implements GestureDetector.On
         float firstX = firstMotion.getX();
         float secondX = secondMotion.getX();
 
-        GestureHandler handler = GestureHandler.getInstance();
-
         if ((firstX + 200) > secondX) {
-            //handler.swipeRight(this, AgeActivity.class);
-            startActivity(new Intent(this, PainLocationActivity.class));
+            startActivity(intent);
         } else {
-            startActivity(new Intent(this, GenderActivity.class));
         }
 
         return true;

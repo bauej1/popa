@@ -24,16 +24,21 @@ public class SettingsActivity extends Activity{
     Switch swConnect;
     TextView tStatus;
     TextView email;
+    TextView tGender;
+    TextView tAge;
     SensorService sensorService;
     Button logOut;
     Button impressum;
 
     Intent intent = null;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        getIntentBundle(getIntent());
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -42,6 +47,11 @@ public class SettingsActivity extends Activity{
         logOut = (Button) findViewById(R.id.logOutButton);
         email = findViewById(R.id.tEmailSettings);
         impressum = findViewById(R.id.impressumButton);
+        tGender = findViewById(R.id.tGender);
+        tAge = findViewById(R.id.tAge);
+
+        tGender.setText(bundle.getString("gender"));
+        tAge.setText(bundle.getString("age"));
 
         swConnect.setOnCheckedChangeListener((compoundButton, b) -> {
 
@@ -89,5 +99,9 @@ public class SettingsActivity extends Activity{
 
     private void signOut() {
         mAuth.signOut();
+    }
+
+    private void getIntentBundle(Intent intent){
+        bundle = intent.getExtras();
     }
 }

@@ -29,11 +29,17 @@ public class PainLocationActivity extends AppCompatActivity implements GestureDe
     ArrayList<BodyPain> filteredList;
     GestureDetector gDetector;
 
+    Intent intent;
+    Bundle bundle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.l_painlocation);
+
+        Intent intentBefore = getIntent();
+        bundle = intentBefore.getExtras();
 
         shoulderButton = (ToggleButton) findViewById(R.id.b_shoulder);
         lowerBackButton = (ToggleButton) findViewById(R.id.b_lowerBack);
@@ -85,11 +91,8 @@ public class PainLocationActivity extends AppCompatActivity implements GestureDe
             }
         });
 
-        Intent intBefore = getIntent();
-        Bundle bundle = intBefore.getExtras();
-        Intent painlocIntent = new Intent(PainLocationActivity.this, TodayPainActivity.class);
-        painlocIntent.putExtras(bundle);
-        startActivity(painlocIntent);
+        intent = new Intent(PainLocationActivity.this, TodayPainActivity.class);
+        intent.putExtras(bundle);
     }
 
     public void initializeBodyImages(){
@@ -185,13 +188,9 @@ public class PainLocationActivity extends AppCompatActivity implements GestureDe
         float firstX = firstMotion.getX();
         float secondX = secondMotion.getX();
 
-        GestureHandler handler = GestureHandler.getInstance();
-
         if ((firstX + 200) > secondX) {
-            //handler.swipeRight(this, AgeActivity.class);
-            startActivity(new Intent(this, TodayPainActivity.class));
+            startActivity(intent);
         } else {
-            startActivity(new Intent(this, AgeActivity.class));
         }
 
         return true;
