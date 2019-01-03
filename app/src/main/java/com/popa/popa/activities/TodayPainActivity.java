@@ -65,13 +65,6 @@ public class TodayPainActivity extends AppCompatActivity implements GestureDetec
                 intent = new Intent(TodayPainActivity.this, TodayMoodActivity.class);
                 bundle.putString("pain", String.valueOf(progress));
                 intent.putExtras(bundle);
-
-                //Intent intBefore = getIntent();
-                //Bundle bundle = intBefore.getExtras();
-                //Intent painIntent = new Intent(TodayPainActivity.this, TodayMoodActivity.class);
-                //bundle.putString("pain", String.valueOf(progress));
-                //painIntent.putExtras(bundle);
-                //startActivity(painIntent);
             }
 
             @Override
@@ -115,14 +108,9 @@ public class TodayPainActivity extends AppCompatActivity implements GestureDetec
         float firstX = firstMotion.getX();
         float secondX = secondMotion.getX();
 
-        GestureHandler handler = GestureHandler.getInstance();
-
         if ((firstX + 200) > secondX) {
-            //handler.swipeRight(this, AgeActivity.class);
             startActivity(intent);
-            //startActivity(new Intent(this, TodayMoodActivity.class));
         } else {
-            //startActivity(new Intent(this, PainLocationActivity.class));
         }
 
         return true;

@@ -90,10 +90,8 @@ public class AgeActivity extends AppCompatActivity implements GestureDetector.On
         float secondX = secondMotion.getX();
 
         if ((firstX + 200) > secondX) {
-            //startActivity(new Intent(this, PainLocationActivity.class));
             startActivity(intent);
         } else {
-            //startActivity(new Intent(this, GenderActivity.class));
         }
 
         return true;

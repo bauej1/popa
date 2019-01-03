@@ -188,14 +188,9 @@ public class PainLocationActivity extends AppCompatActivity implements GestureDe
         float firstX = firstMotion.getX();
         float secondX = secondMotion.getX();
 
-        GestureHandler handler = GestureHandler.getInstance();
-
         if ((firstX + 200) > secondX) {
-            //handler.swipeRight(this, AgeActivity.class);
             startActivity(intent);
-            //startActivity(new Intent(this, TodayPainActivity.class));
         } else {
-            //startActivity(new Intent(this, AgeActivity.class));
         }
 
         return true;

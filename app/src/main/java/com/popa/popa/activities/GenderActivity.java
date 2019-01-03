@@ -50,7 +50,6 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
                 Bundle bundle = new Bundle();
                 bundle.putString("gender", "Female");
                 intent.putExtras(bundle);
-                //startActivity(intent);
             }
         });
 
@@ -65,7 +64,6 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
                 Bundle bundle = new Bundle();
                 bundle.putString("gender", "Male");
                 intent.putExtras(bundle);
-                //startActivity(intent);
             }
         });
     }
@@ -103,9 +101,7 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
         GestureHandler handler = GestureHandler.getInstance();
 
         if ((firstX + 200) > secondX) {
-            //handler.swipeRight(this, AgeActivity.class);
             startActivity(intent);
-            //startActivity(new Intent(this, AgeActivity.class));
         }
 
         return true;

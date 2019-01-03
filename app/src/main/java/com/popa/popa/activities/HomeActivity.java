@@ -80,9 +80,5 @@ public class HomeActivity extends AppCompatActivity {
 
     private void getIntentBundle(Intent intent){
         bundle = intent.getExtras();
-//      gender = formInfo.getString("gender");
-//      age = formInfo.getString("age");
-//      painToday = formInfo.getString("pain");
-//      moodToday = formInfo.getString("mood");
     }
 }
