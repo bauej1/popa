@@ -5,34 +5,49 @@
     android:layout_height="match_parent"
     android:layout_weight="3"
     android:background="@color/appBackground"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="100">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/popa3"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="11"
+        android:text="@string/app_name_big"
+        android:textAlignment="center"
+        android:textColor="@color/tileBackground"
+        android:textSize="35dp" />
 
-        <TextView
-            android:id="@+id/tvDiaryEntry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20dp" />
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barchart_sleep"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="26" />
 
-        <TextView
-            android:id="@+id/test"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barchart_mood"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="26" />
 
-    </LinearLayout>
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barchart_pain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="26" />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addDiaryEntry"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_gravity="bottom|right"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="11"
         android:clickable="true"
         app:backgroundTint="@color/tileBackground"
         app:srcCompat="@drawable/ic_add_white_24dp" />

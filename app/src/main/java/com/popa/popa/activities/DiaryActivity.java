@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,21 +19,22 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.google.android.gms.wearable.DataItem;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.popa.popa.R;
 import com.popa.popa.model.diaryDataItem;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.lang.reflect.Type;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
 import static android.content.ContentValues.TAG;
 
 
@@ -44,13 +44,20 @@ public class DiaryActivity extends AppCompatActivity {
 
     String datapath = "/message_path";
     FloatingActionButton addDiaryEntry;
-    TextView tvDiaryEntry;
-    TextView test;
 
-    ArrayList<diaryDataItem> diaryDataList;
     ArrayList<diaryDataItem> moodDataList;
     ArrayList<diaryDataItem> painDataList;
     ArrayList<diaryDataItem> sleepDataList;
+
+    //Chart-Variables
+    private BarChart barchart_pain;
+    private BarChart barchart_sleep;
+    private BarChart barchart_mood;
+    private XAxis xAxis_pain, xAxis_sleep, xAxis_mood;
+    private YAxis yAxis_pain, yAxis_sleep, yAxis_mood;
+    private ArrayList<BarEntry> barEntries_pain;
+    private ArrayList<BarEntry> barEntries_sleep;
+    private ArrayList<BarEntry> barEntries_mood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +65,8 @@ public class DiaryActivity extends AppCompatActivity {
         setContentView(R.layout.diary_main);
 
         addDiaryEntry = findViewById(R.id.addDiaryEntry);
-        tvDiaryEntry = findViewById(R.id.tvDiaryEntry);
-        test = findViewById(R.id.test);
-        List<String> integerData = new ArrayList<String>();
+
+        initChartVariables();
 
         // Register the local broadcast receiver
         IntentFilter messageFilter = new IntentFilter(Intent.ACTION_SEND);
@@ -146,15 +152,10 @@ public class DiaryActivity extends AppCompatActivity {
                 builder.setPositiveButton(R.string.addDiaryEntry, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        integerData.add("Sleep: " + seekBarSleep.getProgress() + " Pain: " + seekBarPain.getProgress() + " Mood: " + seekBarMood.getProgress());
-
-                        tvDiaryEntry.setText("");
-
-                        for (int j = 0; j < integerData.size(); j++){
-                            tvDiaryEntry.append(integerData.get(j));
-                            tvDiaryEntry.append("\n");
-                        }
-
+                        moodDataList.add(new diaryDataItem(seekBarMood.getProgress() + "", LocalDateTime.now()));
+                        painDataList.add(new diaryDataItem(seekBarPain.getProgress() + "", LocalDateTime.now()));
+                        sleepDataList.add(new diaryDataItem(seekBarSleep.getProgress() + "", LocalDateTime.now()));
+                        prepareDataForChart();
                         return;
                     }
                 });
@@ -166,6 +167,8 @@ public class DiaryActivity extends AppCompatActivity {
                 negativeButton.setTextColor(Color.parseColor("#d3d3d3"));
             }
         });
+
+        prepareDataForChart();
     }
     private void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE);
@@ -177,9 +180,9 @@ public class DiaryActivity extends AppCompatActivity {
         if(moodDataList == null){
             moodDataList = new ArrayList<>();
         }
-            Log.d("moodAray", "value: "+ moodDataList.get(0).getDate());
-        Log.d("moodAray", "value: "+ moodDataList.get(0).getValue());
-        Log.d("moodAray", "value: "+ moodDataList.get(0).getValueString());
+//            Log.d("moodAray", "value: "+ moodDataList.get(0).getDate());
+//        Log.d("moodAray", "value: "+ moodDataList.get(0).getValue());
+//        Log.d("moodAray", "value: "+ moodDataList.get(0).getValueString());
 
 
 
@@ -272,5 +275,99 @@ public class MessageReceiver extends BroadcastReceiver {
         String json = gson.toJson(sleepDataList);
         editor.putString("sleepDataList", json);
         editor.apply();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        //save the data saveDataSleep...etc.
+    }
+
+    /**
+     * Initializes the variables which are useful for building the chart.
+     */
+    private void initChartVariables(){
+        barchart_pain = findViewById(R.id.barchart_pain);
+        barchart_mood = findViewById(R.id.barchart_mood);
+        barchart_sleep = findViewById(R.id.barchart_sleep);
+        xAxis_pain = barchart_pain.getXAxis();
+        yAxis_pain = barchart_pain.getAxisLeft();
+        xAxis_sleep = barchart_sleep.getXAxis();
+        yAxis_sleep = barchart_sleep.getAxisLeft();
+        xAxis_mood = barchart_mood.getXAxis();
+        yAxis_mood = barchart_mood.getAxisLeft();
+        barEntries_pain = new ArrayList<>();
+        barEntries_mood = new ArrayList<>();
+        barEntries_sleep = new ArrayList<>();
+    }
+
+    /**
+     * This method concats the data from the 3 specific arraylists (pain, sleep, mood) and make one arraylist out of it.
+     */
+    private void prepareDataForChart(){
+        for(int i = 0; i < moodDataList.size(); ++i){
+            barEntries_pain.add(new BarEntry(i, painDataList.get(i).getValue()));
+            barEntries_sleep.add(new BarEntry(i, sleepDataList.get(i).getValue()));
+            barEntries_mood.add(new BarEntry(i, moodDataList.get(i).getValue()));
+        }
+
+        //Then build the bar chart
+        buildChart();
+    }
+
+    /**
+     * This method builds the bar chart with its axis and legends including the data.
+     */
+    private void buildChart(){
+
+        BarDataSet set_pain = new BarDataSet(barEntries_pain, "Pain");
+        set_pain.setColors(new int[]{R.color.tileBackground});
+        BarDataSet set_sleep = new BarDataSet(barEntries_sleep, "Sleep");
+        set_sleep.setColors(new int[]{R.color.tileBackground});
+        BarDataSet set_mood = new BarDataSet(barEntries_mood, "Mood");
+        set_mood.setColors(new int[]{R.color.tileBackground});
+
+        BarData data_pain = new BarData(set_pain);
+        BarData data_sleep = new BarData(set_sleep);
+        BarData data_mood = new BarData(set_mood);
+
+        data_pain.setBarWidth(0.7f);
+        data_sleep.setBarWidth(0.7f);
+        data_mood.setBarWidth(0.7f);
+
+        barchart_pain.setData(data_pain);
+        barchart_sleep.setData(data_sleep);
+        barchart_mood.setData(data_mood);
+
+        configChartStyle(barchart_pain);
+        configChartStyle(barchart_sleep);
+        configChartStyle(barchart_mood);
+
+        configAxis(xAxis_pain, yAxis_pain);
+        configAxis(xAxis_sleep, yAxis_sleep);
+        configAxis(xAxis_mood, yAxis_mood);
+
+        barchart_pain.invalidate();
+        barchart_sleep.invalidate();
+        barchart_mood.invalidate();
+    }
+
+    private void configAxis(XAxis xAxis, YAxis yAxis){
+        xAxis.setAxisMaximum(6f);                           //X-Axis
+        xAxis.setAxisMinimum(0f);
+        xAxis.setDrawGridLines(false);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        yAxis.setAxisMaximum(10f);                         //Y-Axis
+        yAxis.setAxisMinimum(0f);
+        yAxis.setGranularity(1f);
+        yAxis.setDrawGridLines(false);
+    }
+
+    private void configChartStyle(BarChart chart){
+        chart.setFitBars(true);
+        chart.getDescription().setEnabled(false);
+        chart.getAxisRight().setDrawLabels(false);      //remove axis lines
+        chart.getAxisRight().setDrawGridLines(false);   //remove axis lines
     }
 }
