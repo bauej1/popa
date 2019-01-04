@@ -101,7 +101,7 @@ public class TutorialActivity extends AppCompatActivity {
      */
     private void showNextHint(){
 
-        if(bubbleCounter >= hints.size()-1){
+        if(bubbleCounter >= hints.size()){
             moveToHome(bundle);
             bubbleCounter = 0;
             finish();
