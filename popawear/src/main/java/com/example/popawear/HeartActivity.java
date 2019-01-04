@@ -15,10 +15,12 @@ import android.widget.TextView;
 public class HeartActivity extends WearableActivity  implements SensorEventListener {
 
     private static final String TAG = "HeartActivity";
+    DataContainer dataContainer = DataContainer.getInstance();
     private TextView text_bpm;
     private Button btnStart;
     SensorManager mSensorManager;
     Sensor mHeartRateSensor;
+    boolean toggler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +36,13 @@ public class HeartActivity extends WearableActivity  implements SensorEventListe
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startMeasure();
-                Log.i(TAG, "LISTENER REGISTERED.");
-                text_bpm.setText("Please wait...");
+                if(toggler){
+                    startMeasure();
+                    Log.i(TAG, "LISTENER REGISTERED.");
+                    text_bpm.setText("Please wait...");
+                }else{
+                    stopMeasure();
+                }
             }
         });
 
@@ -45,6 +51,14 @@ public class HeartActivity extends WearableActivity  implements SensorEventListe
         }
     private void startMeasure() {
         mSensorManager.registerListener(this, mHeartRateSensor, SensorManager.SENSOR_DELAY_FASTEST);
+        toggler = false;
+        btnStart.setText("Stop");
+    }
+
+    private void stopMeasure(){
+        mSensorManager.unregisterListener(this);
+        btnStart.setText("Measure");
+        toggler = true;
     }
 
     public void onResume(){
@@ -60,6 +74,7 @@ public class HeartActivity extends WearableActivity  implements SensorEventListe
             String msg = "" + (int)event.values[0];
             text_bpm.setText(msg);
             Log.d(TAG, msg);
+            dataContainer.setHeartValue((int)event.values[0]);
         }
         else
             Log.d(TAG, "Unknown sensor type");

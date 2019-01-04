@@ -39,7 +39,7 @@ public class PetActivity extends AppCompatActivity implements
 
     String datapath = "/message_path";
     Button mybutton;
-    TextView logger;
+   // TextView logger;
     protected Handler handler;
     String TAG = "Mobile MainActivity";
     int num = 1;
@@ -61,7 +61,7 @@ public class PetActivity extends AppCompatActivity implements
         //get the widgets
         mybutton = findViewById(R.id.button_startBattle);
         mybutton.setOnClickListener(this);
-        logger = findViewById(R.id.text_petName);
+      //  logger = findViewById(R.id.text_petName);
 
         //Stat Controls initializing
         tStrPetValue = findViewById(R.id.text_PetStr);
@@ -70,7 +70,7 @@ public class PetActivity extends AppCompatActivity implements
         tIntPetValue = findViewById(R.id.text_PetInt);
         tPetName = findViewById(R.id.text_petName);
 
-        //message handler for the send thread.
+    /**    //message handler for the send thread.
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -84,7 +84,7 @@ public class PetActivity extends AppCompatActivity implements
         IntentFilter messageFilter = new IntentFilter(Intent.ACTION_SEND);
         MessageReceiver messageReceiver = new MessageReceiver();
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
-
+**/
 
         tIntPetValue.setText("40");
 
@@ -93,10 +93,10 @@ public class PetActivity extends AppCompatActivity implements
 
 
     }
+/**
 
-    /*
-     * simple method to add the log TextView.
-     */
+     // simple method to add the log TextView.
+
     public void logthis(String newinfo) {
         if (newinfo.compareTo("") != 0) {
             logger.append("\n" + newinfo);
@@ -114,7 +114,7 @@ public class PetActivity extends AppCompatActivity implements
 
         }
     }
-
+**/
     //button listener
     @Override
     public void onClick(View v) {
@@ -141,73 +141,6 @@ public class PetActivity extends AppCompatActivity implements
         messagingService.storePetInSharedPreferences(pet);
     }
 
-    //method to create up a bundle to send to a handler via the thread below.
-    public void sendmessage(String logthis) {
-        Bundle b = new Bundle();
-        b.putString("logthis", logthis);
-        Message msg = handler.obtainMessage();
-        msg.setData(b);
-        msg.arg1 = 1;
-        msg.what = 1; //so the empty message is not used!
-        handler.sendMessage(msg);
-
-    }
-
-    //This actually sends the message to the wearable device.
-    class SendThread extends Thread {
-        String path;
-        String message;
-
-        //constructor
-        SendThread(String p, String msg) {
-            path = p;
-            message = msg;
-        }
-
-        //sends the message via the thread.  this will send to all wearables connected, but
-        //since there is (should only?) be one, no problem.
-        public void run() {
-
-            //first get all the nodes, ie connected wearable devices.
-            Task<List<Node>> nodeListTask =
-                    Wearable.getNodeClient(getApplicationContext()).getConnectedNodes();
-            try {
-                // Block on a task and get the result synchronously (because this is on a background
-                // thread).
-                List<Node> nodes = Tasks.await(nodeListTask);
-
-                //Now send the message to each device.
-                for (Node node : nodes) {
-                    Task<Integer> sendMessageTask =
-                            Wearable.getMessageClient(PetActivity.this).sendMessage(node.getId(), path, message.getBytes());
-
-                    try {
-                        // Block on a task and get the result synchronously (because this is on a background
-                        // thread).
-                        Integer result = Tasks.await(sendMessageTask);
-                        sendmessage("SendThread: message send to " + node.getDisplayName());
-                        Log.v(TAG, "SendThread: message send to " + node.getDisplayName());
-
-                    } catch (ExecutionException exception) {
-                        sendmessage("SendThread: message failed to" + node.getDisplayName());
-                        Log.e(TAG, "Send Task failed: " + exception);
-
-                    } catch (InterruptedException exception) {
-                        Log.e(TAG, "Send Interrupt occurred: " + exception);
-                    }
-
-                }
-
-            } catch (ExecutionException exception) {
-                sendmessage("Node Task failed: " + exception);
-                Log.e(TAG, "Node Task failed: " + exception);
-
-            } catch (InterruptedException exception) {
-                Log.e(TAG, "Node Interrupt occurred: " + exception);
-            }
-
-        }
-    }
 
     private void getPetFromSharedPreferences(){
         pet = messagingService.getPetFromSharedPreferences();

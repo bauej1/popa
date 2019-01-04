@@ -24,6 +24,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.code.gson:gson:2.8.2'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     wearApp project(':popawear')
     implementation 'com.android.support:appcompat-v7:26.1.0'
