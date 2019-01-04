@@ -42,10 +42,13 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
         buttonGenderFemale.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View view){
+                // Fades male image if female button is chosen
                 buttonGenderMale.setImageAlpha(63);
                 buttonGenderFemale.setImageAlpha(255);
                 textSwipe.setVisibility(View.VISIBLE);
                 gifSwipe.setVisibility(View.VISIBLE);
+
+                // Packs the chosen gender in bundle
                 intent = new Intent(GenderActivity.this, AgeActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("gender", "Female");
@@ -56,10 +59,13 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
         buttonGenderMale.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View view){
+                // Fades female image if male button is chosen
                 buttonGenderFemale.setImageAlpha(63);
                 buttonGenderMale.setImageAlpha(255);
                 textSwipe.setVisibility(View.VISIBLE);
                 gifSwipe.setVisibility(View.VISIBLE);
+
+                // Packs the chosen gender in bundle
                 intent= new Intent(GenderActivity.this, AgeActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("gender", "Male");
@@ -101,6 +107,7 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
         GestureHandler handler = GestureHandler.getInstance();
 
         if ((firstX + 200) > secondX) {
+            // Starts AgeActivity if swipe from right to left
             startActivity(intent);
         }
 
