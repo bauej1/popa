@@ -313,7 +313,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="@drawable/custom_background"
+        android:background="@color/tileBackground"
         android:text="@string/logOut" />
 
     <Button
@@ -321,7 +321,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="@drawable/custom_background_grey"
+        android:background="@color/textColorLight"
         android:text="@string/impressum" />
 
 </LinearLayout>

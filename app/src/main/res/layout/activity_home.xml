@@ -61,7 +61,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/mainbottom_background_light"
                 android:paddingBottom="5dp"
-                android:text="6473"
+                android:text="N/A"
                 android:textAlignment="center"
                 android:textColor="@color/tileBackground"
                 android:textSize="18sp" />

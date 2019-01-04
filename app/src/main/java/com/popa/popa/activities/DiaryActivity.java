@@ -183,6 +183,9 @@ public class DiaryActivity extends AppCompatActivity {
 //            Log.d("moodAray", "value: "+ moodDataList.get(0).getDate());
 //        Log.d("moodAray", "value: "+ moodDataList.get(0).getValue());
 //        Log.d("moodAray", "value: "+ moodDataList.get(0).getValueString());
+        //Log.d("moodAray", "value: "+ moodDataList.get(0).getDate());
+        //Log.d("moodAray", "value: "+ moodDataList.get(0).getValue());
+        //Log.d("moodAray", "value: "+ moodDataList.get(0).getValueString());
 
 
 
