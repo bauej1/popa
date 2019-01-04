@@ -34,16 +34,23 @@ public class AgeActivity extends AppCompatActivity implements GestureDetector.On
         seekBarAge = (SeekBar) findViewById(R.id.seekBarAge);
         gDetector = new GestureDetector(this);
 
+        // Sets the maximum value of seek bar to 50
         seekBarAge.setMax(50);
+
+        // Sets actual value of seek bar to 25
         seekBarAge.setProgress(25);
 
         seekBarAge.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Sets the minimum value of seek bar to 10
                 progress = progress + 10;
+
+                // Sets the text as value from seek bar
                 textAge.setText(String.valueOf(progress));
 
+                // Packs the value from seek bar in bundle
                 intent = new Intent(AgeActivity.this, PainLocationActivity.class);
                 bundle.putString("age", String.valueOf(progress));
                 intent.putExtras(bundle);
@@ -90,6 +97,7 @@ public class AgeActivity extends AppCompatActivity implements GestureDetector.On
         float secondX = secondMotion.getX();
 
         if ((firstX + 200) > secondX) {
+            // Starts PainLocationActivity if swipe from right to left
             startActivity(intent);
         } else {
         }

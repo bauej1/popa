@@ -33,6 +33,7 @@ public class ExerciseActivity extends AppCompatActivity {
         exercise6 = findViewById(R.id.bEx6);
         exercise7 = findViewById(R.id.bEx7);
 
+        // Opens the Alert Dialog of the exercise Child's Pose if button is clicked
         exercise1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,6 +46,7 @@ public class ExerciseActivity extends AppCompatActivity {
             }
         });
 
+        // Opens the Alert Dialog of the exercise Forward Fold if button is clicked
         exercise2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +59,7 @@ public class ExerciseActivity extends AppCompatActivity {
             }
         });
 
+        // Opens the Alert Dialog of the exercise Cat Cow if button is clicked
         exercise3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +72,7 @@ public class ExerciseActivity extends AppCompatActivity {
             }
         });
 
+        // Opens the Alert Dialog of the exercise Standing Cat Cow if button is clicked
         exercise4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,6 +85,7 @@ public class ExerciseActivity extends AppCompatActivity {
             }
         });
 
+        // Opens the Alert Dialog of the exercise High Plank if button is clicked
         exercise5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +98,7 @@ public class ExerciseActivity extends AppCompatActivity {
             }
         });
 
+        // Opens the Alert Dialog of the exercise Side Plank if button is clicked
         exercise6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,6 +111,7 @@ public class ExerciseActivity extends AppCompatActivity {
             }
         });
 
+        // Opens the Alert Dialog of the exercise Downfacing Dog if button is clicked
         exercise7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

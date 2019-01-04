@@ -31,7 +31,9 @@ public class HomeActivity extends AppCompatActivity {
 
         getIntentBundle(getIntent());
 
+        // Checks whether the bundle is packed or not
         if(bundle == null){
+            // If bundle is null, the data from user is chosen from the mobile devise
             editor = sp.edit();
             Bundle bundleIfNull = new Bundle();
             bundleIfNull.putString("gender", sp.getString("gender", ""));
@@ -39,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
 
             this.bundle = bundleIfNull;
         } else {
+            // If bundle is not null, the data is chosen from the bundle
             editor = sp.edit();
             editor.putString("gender", bundle.getString("gender"));
             editor.putString("age", bundle.getString("age"));
@@ -51,27 +54,32 @@ public class HomeActivity extends AppCompatActivity {
         bInformation = findViewById(R.id.bInfo);
         bDiary = findViewById(R.id.bDiary);
 
+        // Opens SettingsActivity if Settings button is clicked
         bSettings.setOnClickListener(v -> {
             Intent a = new Intent(v.getContext(), SettingsActivity.class);
             a.putExtras(bundle);
             startActivity(a);
         });
 
+        // Opens StatisticsActivity if Statistics button is clicked
         bStatistics.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), StatisticsActivity.class);
             startActivity(intent);
         });
 
+        // Opens PetActivity if Pet button is clicked
         bPet.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), PetActivity.class);
             startActivity(intent);
         });
 
+        // Opens InformationActivity if Information button is clicked
         bInformation.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), InformationActivity.class);
             startActivity(intent);
         });
 
+        // Opens DiaryActivity if Diary button is clicked
         bDiary.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), DiaryActivity.class);
             startActivity(intent);
