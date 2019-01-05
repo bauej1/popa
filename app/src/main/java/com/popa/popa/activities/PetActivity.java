@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -57,8 +58,8 @@ public class PetActivity extends AppCompatActivity implements
     private TextView tPetlvl;
     private String primaryAttribute;
     private Pet pet;
-    private Button nextPet;
-    private Button previousPet;
+    private ImageButton nextPet;
+    private ImageButton previousPet;
     private ArrayList<String> petList;
     private int counter;
     private ImageView petView;
