@@ -40,10 +40,15 @@ import static android.content.ContentValues.TAG;
 
 public class DiaryActivity extends AppCompatActivity {
 
+    //2 Variables used for data message transfer from Smartwatch
     private static final String URL = "https://fcm.googleapis.com/fcm/send";
-
     String datapath = "/message_path";
+
     FloatingActionButton addDiaryEntry;
+
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
+
 
     ArrayList<diaryDataItem> moodDataList;
     ArrayList<diaryDataItem> painDataList;
@@ -75,6 +80,7 @@ public class DiaryActivity extends AppCompatActivity {
         loadData();
         loadData2();
         loadData3();
+        sp = this.getApplicationContext().getSharedPreferences("pet", 0);
         addDiaryEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,6 +158,11 @@ public class DiaryActivity extends AppCompatActivity {
                 builder.setPositiveButton(R.string.addDiaryEntry, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        editor = sp.edit();
+                        int diaryInputs = Integer.valueOf(sp.getString("diaryInput","0"));
+                        diaryInputs = diaryInputs+1;
+                        editor.putString("diaryInput",""+diaryInputs);
+                        editor.commit();
                         moodDataList.add(new diaryDataItem(seekBarMood.getProgress() + "", LocalDateTime.now()));
                         painDataList.add(new diaryDataItem(seekBarPain.getProgress() + "", LocalDateTime.now()));
                         sleepDataList.add(new diaryDataItem(seekBarSleep.getProgress() + "", LocalDateTime.now()));
