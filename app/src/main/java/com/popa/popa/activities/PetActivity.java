@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -180,6 +182,20 @@ public class PetActivity extends AppCompatActivity implements
     }
 
     public void levelUp(){
+        // setup the alert builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(Html.fromHtml("<font color='#000000'>Level Up!</font>"));
+        builder.setMessage(Html.fromHtml("<font color='#000000'>Congratulations! <br> Your pet leveled up and got stronger!</font>"));
+
+        // add the buttons
+        builder.setPositiveButton("OK", null);
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.getWindow().setBackgroundDrawableResource(R.color.appBackground);
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(R.color.tileBackgroundDark);
+
         int stats = Integer.valueOf(tStrPetValue.getText().toString());
         stats = stats + 2;
         tStrPetValue.setText("300");
