@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,17 +22,20 @@ public class SettingsActivity extends Activity{
 
     private FirebaseAuth mAuth;
 
-    Switch swConnect;
-    TextView tStatus;
-    TextView email;
-    TextView tGender;
-    TextView tAge;
-    SensorService sensorService;
-    Button logOut;
-    Button impressum;
+   private Switch swConnectSensor;
+   private Switch swConnectWatch;
+   private Switch swPetMode;
 
-    Intent intent = null;
-    Bundle bundle;
+   private TextView tStatus;
+   private TextView email;
+   private TextView tGender;
+   private TextView tAge;
+   private SensorService sensorService;
+   private Button logOut;
+   private Button impressum;
+
+   private Intent intent = null;
+   private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,21 +43,11 @@ public class SettingsActivity extends Activity{
         setContentView(R.layout.activity_settings);
 
         getIntentBundle(getIntent());
+        init();
 
-        mAuth = FirebaseAuth.getInstance();
+        readSettings();
 
-        swConnect = (Switch) findViewById(R.id.swConnectSensor);
-        tStatus = (TextView) findViewById(R.id.tStatus);
-        logOut = (Button) findViewById(R.id.logOutButton);
-        email = findViewById(R.id.tEmailSettings);
-        impressum = findViewById(R.id.impressumButton);
-        tGender = findViewById(R.id.tGender);
-        tAge = findViewById(R.id.tAge);
-
-        tGender.setText(bundle.getString("gender"));
-        tAge.setText(bundle.getString("age"));
-
-        swConnect.setOnCheckedChangeListener((compoundButton, b) -> {
+        swConnectSensor.setOnCheckedChangeListener((compoundButton, b) -> {
 
             if(compoundButton.isChecked()){
                 sensorService = new SensorService(this);
@@ -70,7 +64,7 @@ public class SettingsActivity extends Activity{
                 signOut();
                 intent = new Intent(view.getContext(), LogInActivity.class);
                 startActivity(intent);
-
+                finish();
             }
         });
 
@@ -87,8 +81,29 @@ public class SettingsActivity extends Activity{
         });
 
         getCurrentUserEmail();
+    }
 
+    private void init(){
+        mAuth = FirebaseAuth.getInstance();
 
+        swConnectSensor = findViewById(R.id.swConnectSensor);
+        swPetMode = findViewById(R.id.swActivatePet);
+        swConnectWatch = findViewById(R.id.swConnectWatch);
+        tStatus = findViewById(R.id.tStatus);
+        logOut = findViewById(R.id.logOutButton);
+        email = findViewById(R.id.tEmailSettings);
+        impressum = findViewById(R.id.impressumButton);
+        tGender = findViewById(R.id.tGender);
+        tAge = findViewById(R.id.tAge);
+
+        tGender.setText(bundle.getString("gender"));
+        tAge.setText(bundle.getString("age"));
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        storeSettings();
     }
 
     private void getCurrentUserEmail(){
@@ -103,5 +118,47 @@ public class SettingsActivity extends Activity{
 
     private void getIntentBundle(Intent intent){
         bundle = intent.getExtras();
+    }
+
+    /**
+     * Store settings in shared preferences "settings".
+     */
+    private void storeSettings(){
+        SharedPreferences sp = this.getApplicationContext().getSharedPreferences("settings", 0);
+        SharedPreferences.Editor editor = sp.edit();
+
+        editor.putBoolean("petMode", swPetMode.isChecked());
+//        editor.putBoolean("sensor", swConnectSensor.isChecked());
+//        editor.putBoolean("watch", swConnectWatch.isChecked());
+
+        editor.commit();
+    }
+
+    /**
+     * read the Settings from the shared preferences.
+     */
+    private void readSettings(){
+        SharedPreferences sp = this.getApplicationContext().getSharedPreferences("settings", 0);
+
+//        boolean sensorStatus = sp.getBoolean("sensor", false);
+        boolean petStatus = sp.getBoolean("petMode", false);
+//        boolean watchStatus = sp.getBoolean("watch", false);
+
+//        setSettingOnControl(swConnectSensor, sensorStatus);
+        setSettingOnControl(swPetMode, petStatus);
+//        setSettingOnControl(swConnectWatch, watchStatus);
+    }
+
+    /**
+     * Sets the stored setting status from the shared preferences on the control.
+     * @param sw - Switch Control
+     * @param value - Boolean if checked or not
+     */
+    private void setSettingOnControl(Switch sw, boolean value){
+        if(value){
+            sw.setChecked(true);
+        } else {
+            sw.setChecked(false);
+        }
     }
 }

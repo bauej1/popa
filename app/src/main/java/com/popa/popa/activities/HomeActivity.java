@@ -23,27 +23,24 @@ import com.popa.popa.services.MessageReceiver;
 
 public class HomeActivity extends AppCompatActivity implements SensorEventListener, StepListener {
 
-    //2 Variables used for data message transfer from Smartwatch
-    private static final String URL = "https://fcm.googleapis.com/fcm/send";
-    String datapath = "/message_path";
-
     private StepDetector simpleStepDetector;
     private SensorManager sensorManager;
     private Sensor accel;
     private int numSteps;
-    ImageButton bSettings;
-    ImageButton bStatistics;
-    ImageButton bPet;
-    ImageButton bInformation;
-    ImageButton bDiary;
-    ImageButton bHeart;
-    ImageButton bSteps;
-    TextView tHeart;
-    TextView tSteps;
-    Bundle bundle;
-    String heartRate;
-    String steps;
-    Boolean watchConnected = false;
+    private ImageButton bSettings;
+    private ImageButton bStatistics;
+    private ImageButton bPet;
+    private ImageButton bInformation;
+    private ImageButton bDiary;
+    private ImageButton bHeart;
+    private ImageButton bSteps;
+    private TextView tHeart;
+    private TextView tSteps;
+    private TextView tPet;
+    private Bundle bundle;
+    private String heartRate;
+    private String steps;
+    private Boolean watchConnected = false;
 
     SharedPreferences sp;
     SharedPreferences spHeart;
@@ -66,7 +63,6 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
 
         sp = this.getApplicationContext().getSharedPreferences("user", 0);
-
 
         getIntentBundle(getIntent());
 
@@ -92,6 +88,7 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
         bSettings = findViewById(R.id.bSettings);
         bStatistics = findViewById(R.id.bStatistics);
         bPet = findViewById(R.id.bPet);
+        tPet = findViewById(R.id.tPet);
         bInformation = findViewById(R.id.bInfo);
         bDiary = findViewById(R.id.bDiary);
         bHeart = findViewById(R.id.bHeart);
@@ -147,6 +144,7 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
                 sensorManager.registerListener(HomeActivity.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
         });
 
+        readPetMode();
     }
 
     @Override
@@ -165,6 +163,8 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
         }else{
             tSteps.setText("--");
         }
+
+        readPetMode();
     }
 
     private void getIntentBundle(Intent intent){
@@ -221,6 +221,27 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
             editor.putString("step",steps);
             editor.commit();
             tSteps.setText(spHeart.getString("step", "N/A"));
+        }
+    }
+
+    /**
+     * This method handles if the pet mode is activated or not.
+     */
+    private void readPetMode(){
+        SharedPreferences sp = this.getApplicationContext().getSharedPreferences("settings", 0);
+
+        boolean petModeEnabled = sp.getBoolean("petMode", false);
+
+        if(!petModeEnabled){
+            tPet.setBackground(getResources().getDrawable(R.drawable.mainbottom_background_grey));
+            bPet.setBackground(getResources().getDrawable(R.drawable.maintop_background_grey));
+            bPet.setAlpha(120);
+            bPet.setEnabled(false);
+        } else {
+            tPet.setBackground(getResources().getDrawable(R.drawable.mainbottom_background));
+            bPet.setBackground(getResources().getDrawable(R.drawable.maintop_background));
+            bPet.setAlpha(255);
+            bPet.setEnabled(true);
         }
     }
 }

@@ -39,14 +39,14 @@ import static android.content.ContentValues.TAG;
 
 public class DiaryActivity extends AppCompatActivity {
 
-    FloatingActionButton addDiaryEntry;
+    private FloatingActionButton addDiaryEntry;
 
-    SharedPreferences sp;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
-    ArrayList<diaryDataItem> moodDataList;
-    ArrayList<diaryDataItem> painDataList;
-    ArrayList<diaryDataItem> sleepDataList;
+    private ArrayList<diaryDataItem> moodDataList;
+    private ArrayList<diaryDataItem> painDataList;
+    private ArrayList<diaryDataItem> sleepDataList;
 
     //Chart-Variables
     private BarChart barchart_pain;
