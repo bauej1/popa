@@ -30,9 +30,9 @@ public class TodayPainActivity extends AppCompatActivity implements GestureDetec
         Intent intentBefore = getIntent();
         bundle = intentBefore.getExtras();
 
-        textPain = (TextView) findViewById(R.id.textPain);
-        seekBarPain = (SeekBar) findViewById(R.id.seekBarPain);
-        imageSmile = (ImageView) findViewById(R.id.imageSmile);
+        textPain = findViewById(R.id.textPain);
+        seekBarPain = findViewById(R.id.seekBarPain);
+        imageSmile = findViewById(R.id.imageSmile);
         gDetector = new GestureDetector(this);
 
         seekBarPain.setMax(10);
@@ -110,9 +110,8 @@ public class TodayPainActivity extends AppCompatActivity implements GestureDetec
 
         if ((firstX + 200) > secondX) {
             startActivity(intent);
-        } else {
+            finish();
         }
-
         return true;
     }
 

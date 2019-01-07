@@ -27,7 +27,6 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
     private static final String URL = "https://fcm.googleapis.com/fcm/send";
     String datapath = "/message_path";
 
-
     private StepDetector simpleStepDetector;
     private SensorManager sensorManager;
     private Sensor accel;
@@ -98,8 +97,6 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
         bHeart = findViewById(R.id.bHeart);
         tSteps = findViewById(R.id.tSteps);
         bSteps = findViewById(R.id.bSteps);
-
-
 
         bHeart.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), HeartRateMonitor.class);

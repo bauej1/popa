@@ -20,7 +20,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -181,6 +180,7 @@ public class DiaryActivity extends AppCompatActivity {
 
         prepareDataForChart();
     }
+
     private void loadData(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE);
         Gson gson = new Gson();
@@ -191,16 +191,8 @@ public class DiaryActivity extends AppCompatActivity {
         if(moodDataList == null){
             moodDataList = new ArrayList<>();
         }
-//            Log.d("moodAray", "value: "+ moodDataList.get(0).getDate());
-//        Log.d("moodAray", "value: "+ moodDataList.get(0).getValue());
-//        Log.d("moodAray", "value: "+ moodDataList.get(0).getValueString());
-        //Log.d("moodAray", "value: "+ moodDataList.get(0).getDate());
-        //Log.d("moodAray", "value: "+ moodDataList.get(0).getValue());
-        //Log.d("moodAray", "value: "+ moodDataList.get(0).getValueString());
-
-
-
     }
+
     private void loadData2(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE);
         Gson gson = new Gson();
@@ -211,7 +203,6 @@ public class DiaryActivity extends AppCompatActivity {
         if(painDataList == null){
             painDataList = new ArrayList<>();
         }
-    //    Log.d("moodAray", ""+painDataList.get(0).getDate()+painDataList.get(0).getValue());
 
     }
     private void loadData3(){
@@ -224,9 +215,8 @@ public class DiaryActivity extends AppCompatActivity {
         if(sleepDataList == null){
             sleepDataList = new ArrayList<>();
         }
-      //  Log.d("moodAray", ""+sleepDataList.get(0).getDate()+sleepDataList.get(0).getValue());
-
     }
+
 /////////////////////////////////////////////// Added the Receiver for the Smart Watch ///////////////////////////////////////////////////////
 //setup a broadcast receiver to receive the messages from the wear device via the listenerService.
 public class MessageReceiver extends BroadcastReceiver {

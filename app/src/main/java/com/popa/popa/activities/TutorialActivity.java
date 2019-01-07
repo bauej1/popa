@@ -125,6 +125,7 @@ public class TutorialActivity extends AppCompatActivity {
         }
 
         startActivity(intent);
+        finish();
     }
 
     @Override

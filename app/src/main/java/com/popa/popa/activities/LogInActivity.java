@@ -76,6 +76,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                         if (task.isSuccessful()) {
                             Log.d(TAG, "createUserWithEmail:success");
                             startActivity(new Intent(LogInActivity.this, GenderActivity.class));
+                            finish();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else if (password.length() < 6){
@@ -104,6 +105,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
                             startActivity(new Intent(LogInActivity.this, HomeActivity.class));
+                            finish();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {

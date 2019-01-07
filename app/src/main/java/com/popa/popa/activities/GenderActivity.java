@@ -104,13 +104,10 @@ public class GenderActivity extends AppCompatActivity implements GestureDetector
         float firstX = firstMotion.getX();
         float secondX = secondMotion.getX();
 
-        GestureHandler handler = GestureHandler.getInstance();
-
         if ((firstX + 200) > secondX) {
-            // Starts AgeActivity if swipe from right to left
             startActivity(intent);
+            finish();
         }
-
         return true;
     }
 

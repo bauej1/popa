@@ -32,7 +32,6 @@ public class PainLocationActivity extends AppCompatActivity implements GestureDe
     Intent intent;
     Bundle bundle;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -41,12 +40,12 @@ public class PainLocationActivity extends AppCompatActivity implements GestureDe
         Intent intentBefore = getIntent();
         bundle = intentBefore.getExtras();
 
-        shoulderButton = (ToggleButton) findViewById(R.id.b_shoulder);
-        lowerBackButton = (ToggleButton) findViewById(R.id.b_lowerBack);
-        sacrumButton = (ToggleButton) findViewById(R.id.b_sacrum);
-        otherAreaButton = (ToggleButton) findViewById(R.id.b_other);
-        noPainButton = (ToggleButton) findViewById(R.id.b_noPain);
-        elementBody = (ImageView) findViewById(R.id.elementBody);
+        shoulderButton = findViewById(R.id.b_shoulder);
+        lowerBackButton = findViewById(R.id.b_lowerBack);
+        sacrumButton = findViewById(R.id.b_sacrum);
+        otherAreaButton = findViewById(R.id.b_other);
+        noPainButton = findViewById(R.id.b_noPain);
+        elementBody = findViewById(R.id.elementBody);
         gDetector = new GestureDetector(this);
 
         initializeBodyImages();
@@ -190,9 +189,8 @@ public class PainLocationActivity extends AppCompatActivity implements GestureDe
 
         if ((firstX + 200) > secondX) {
             startActivity(intent);
-        } else {
+            finish();
         }
-
         return true;
     }
 

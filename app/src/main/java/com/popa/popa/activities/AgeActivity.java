@@ -30,8 +30,8 @@ public class AgeActivity extends AppCompatActivity implements GestureDetector.On
         Intent intentBefore = getIntent();
         bundle = intentBefore.getExtras();
 
-        textAge = (TextView) findViewById(R.id.text_age);
-        seekBarAge = (SeekBar) findViewById(R.id.seekBarAge);
+        textAge = findViewById(R.id.text_age);
+        seekBarAge = findViewById(R.id.seekBarAge);
         gDetector = new GestureDetector(this);
 
         // Sets the maximum value of seek bar to 50
@@ -97,11 +97,9 @@ public class AgeActivity extends AppCompatActivity implements GestureDetector.On
         float secondX = secondMotion.getX();
 
         if ((firstX + 200) > secondX) {
-            // Starts PainLocationActivity if swipe from right to left
             startActivity(intent);
-        } else {
+            finish();
         }
-
         return true;
     }
 

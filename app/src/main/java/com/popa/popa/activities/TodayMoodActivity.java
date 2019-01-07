@@ -30,9 +30,9 @@ public class TodayMoodActivity extends AppCompatActivity implements GestureDetec
         Intent intentBefore = getIntent();
         bundle = intentBefore.getExtras();
 
-        textMood = (TextView) findViewById(R.id.textMood);
-        seekBarMood = (SeekBar) findViewById(R.id.seekBarMood);
-        imageMood = (ImageView) findViewById(R.id.imageMood);
+        textMood = findViewById(R.id.textMood);
+        seekBarMood = findViewById(R.id.seekBarMood);
+        imageMood = findViewById(R.id.imageMood);
         gDetector = new GestureDetector(this);
 
         seekBarMood.setMax(10);
@@ -110,7 +110,7 @@ public class TodayMoodActivity extends AppCompatActivity implements GestureDetec
 
         if ((firstX + 200) > secondX) {
             startActivity(intent);
-        } else {
+            finish();
         }
         return true;
     }
