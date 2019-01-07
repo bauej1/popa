@@ -206,10 +206,10 @@ public class StatisticsActivity extends AppCompatActivity {
         List<LegendEntry> entries = new ArrayList<>();
         LegendEntry e1 = new LegendEntry();
 
-        e1.formColor = Color.parseColor("#6666FF");
+        e1.formColor = Color.parseColor("#008080");
         e1.label = "Good";
         LegendEntry e2 = new LegendEntry();
-        e2.formColor = Color.parseColor("#ff0000");
+        e2.formColor = Color.parseColor("#CC0000");
         e2.label = "Bad";
 
         entries.add(e1);

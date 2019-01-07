@@ -12,8 +12,8 @@
     <color name="tileBackground">#008080</color>
     <color name="tileBackgroundDark">#005959</color>
     <color name="tileBackgroundLight">#b2d8d8</color>
-    <color name="goodPosture">#6666FF</color>
-    <color name="badPosture">#ff0000</color>
+    <color name="goodPosture">#008080</color>
+    <color name="badPosture">#CC0000</color>
     <color name="textColor">#7f7f7f</color>
     <color name="textColorLight">#bababa</color>
 </resources>

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -36,18 +37,12 @@ import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
-
 public class DiaryActivity extends AppCompatActivity {
-
-    //2 Variables used for data message transfer from Smartwatch
-    private static final String URL = "https://fcm.googleapis.com/fcm/send";
-    String datapath = "/message_path";
 
     FloatingActionButton addDiaryEntry;
 
     SharedPreferences sp;
     SharedPreferences.Editor editor;
-
 
     ArrayList<diaryDataItem> moodDataList;
     ArrayList<diaryDataItem> painDataList;
@@ -70,6 +65,14 @@ public class DiaryActivity extends AppCompatActivity {
 
         addDiaryEntry = findViewById(R.id.addDiaryEntry);
 
+        if(isDiaryDone()){
+            addDiaryEntry.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.textColor)));
+            addDiaryEntry.setEnabled(false);
+        } else {
+            addDiaryEntry.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tileBackground)));
+            addDiaryEntry.setEnabled(true);
+        }
+
         initChartVariables();
 
         // Register the local broadcast receiver
@@ -83,6 +86,11 @@ public class DiaryActivity extends AppCompatActivity {
         addDiaryEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(isDiaryDone()){
+                    return;
+                }
+
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 final View diaryEntryView = inflater.inflate(R.layout.diary_entry_test,null, false);
                 final SeekBar seekBarMood = diaryEntryView.findViewById(R.id.seekyBarMood);
@@ -165,7 +173,11 @@ public class DiaryActivity extends AppCompatActivity {
                         moodDataList.add(new diaryDataItem(seekBarMood.getProgress() + "", LocalDateTime.now()));
                         painDataList.add(new diaryDataItem(seekBarPain.getProgress() + "", LocalDateTime.now()));
                         sleepDataList.add(new diaryDataItem(seekBarSleep.getProgress() + "", LocalDateTime.now()));
+
+                        setDiaryStatus();
+                        addDiaryEntry.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.textColor)));
                         prepareDataForChart();
+
                         return;
                     }
                 });
@@ -177,7 +189,6 @@ public class DiaryActivity extends AppCompatActivity {
                 negativeButton.setTextColor(Color.parseColor("#d3d3d3"));
             }
         });
-
         prepareDataForChart();
     }
 
@@ -284,7 +295,9 @@ public class MessageReceiver extends BroadcastReceiver {
     @Override
     protected void onPause(){
         super.onPause();
-        //save the data saveDataSleep...etc.
+        saveDataMood();
+        saveDataPain();
+        saveDataSleep();
     }
 
     /**
@@ -356,6 +369,11 @@ public class MessageReceiver extends BroadcastReceiver {
         barchart_mood.invalidate();
     }
 
+    /**
+     * Configurates the X and Y Axis of the charts
+     * @param xAxis - the XAxis
+     * @param yAxis - the YAxis
+     */
     private void configAxis(XAxis xAxis, YAxis yAxis){
         xAxis.setAxisMaximum(6f);                           //X-Axis
         xAxis.setAxisMinimum(0f);
@@ -373,5 +391,36 @@ public class MessageReceiver extends BroadcastReceiver {
         chart.getDescription().setEnabled(false);
         chart.getAxisRight().setDrawLabels(false);      //remove axis lines
         chart.getAxisRight().setDrawGridLines(false);   //remove axis lines
+    }
+
+    /**
+     * Sets the status of the diary (filled out or not) in the shared preferences of the android device.
+     */
+    private void setDiaryStatus(){
+        SharedPreferences sp = this.getApplicationContext().getSharedPreferences("diary", 0);
+        SharedPreferences.Editor editor = sp.edit();
+
+        editor.putString("timestamp", LocalDateTime.now() + "");
+        editor.commit();
+    }
+
+    /**
+     * Checks if the diary is already filled out for the todays day.
+     * @return true if diary is already filled out.
+     */
+    private boolean isDiaryDone(){
+        SharedPreferences sp = this.getApplicationContext().getSharedPreferences("diary", 0);
+        String timestamp = sp.getString("timestamp", "0");
+
+        if(timestamp.equals("0")) return false;
+
+        String storedDay = timestamp.substring(7,9);
+        String nowDay = LocalDateTime.now().toString().substring(7,9);
+
+        if(storedDay.equals(nowDay)){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
