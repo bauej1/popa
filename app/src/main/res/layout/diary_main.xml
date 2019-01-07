@@ -6,6 +6,7 @@
     android:layout_weight="3"
     android:background="@color/appBackground"
     android:orientation="vertical"
+    android:padding="5dp"
     android:weightSum="100">
 
     <TextView
@@ -18,19 +19,47 @@
         android:textColor="@color/tileBackground"
         android:textSize="35dp" />
 
+    <TextView
+        android:id="@+id/tPostureChartLabel2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sleepDiary"
+        android:textColor="@color/tileBackground"
+        android:textSize="19dp" />
+
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchart_sleep"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
-        android:layout_weight="26" />
+        android:layout_weight="26">
+
+    </com.github.mikephil.charting.charts.BarChart>
+
+    <TextView
+        android:id="@+id/tPostureChartLabel4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/moodDiary"
+        android:textColor="@color/tileBackground"
+        android:textSize="19dp" />
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchart_mood"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
-        android:layout_weight="26" />
+        android:layout_weight="26">
+
+    </com.github.mikephil.charting.charts.BarChart>
+
+    <TextView
+        android:id="@+id/tPostureChartLabel5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/painDiary"
+        android:textColor="@color/tileBackground"
+        android:textSize="19dp" />
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchart_pain"

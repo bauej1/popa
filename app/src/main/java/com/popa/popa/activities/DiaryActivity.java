@@ -338,11 +338,13 @@ public class MessageReceiver extends BroadcastReceiver {
     private void buildChart(){
 
         BarDataSet set_pain = new BarDataSet(barEntries_pain, "Pain");
-        set_pain.setColors(new int[]{R.color.tileBackground});
+        set_pain.setColors(new int[]{getResources().getColor(R.color.tileBackground)});
+
         BarDataSet set_sleep = new BarDataSet(barEntries_sleep, "Sleep");
-        set_sleep.setColors(new int[]{R.color.tileBackground});
+        set_sleep.setColors(new int[]{getResources().getColor(R.color.tileBackground)});
+
         BarDataSet set_mood = new BarDataSet(barEntries_mood, "Mood");
-        set_mood.setColors(new int[]{R.color.tileBackground});
+        set_mood.setColors(new int[]{getResources().getColor(R.color.tileBackground)});
 
         BarData data_pain = new BarData(set_pain);
         BarData data_sleep = new BarData(set_sleep);
