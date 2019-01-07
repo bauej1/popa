@@ -1,10 +1,12 @@
 package com.popa.popa.activities;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -21,7 +23,11 @@ import com.popa.popa.model.StepDetector;
 import com.popa.popa.model.StepListener;
 import com.popa.popa.services.MessageReceiver;
 
+import java.security.Permission;
+
 public class HomeActivity extends AppCompatActivity implements SensorEventListener, StepListener {
+
+    private static int CALLBACK_NUMBER = 0;
 
     private StepDetector simpleStepDetector;
     private SensorManager sensorManager;
@@ -96,8 +102,7 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
         bSteps = findViewById(R.id.bSteps);
 
         bHeart.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), HeartRateMonitor.class);
-            startActivity(intent);
+            handleCameraPermission();
         });
 
         // Opens SettingsActivity if Settings button is clicked
@@ -145,6 +150,14 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
         });
 
         readPetMode();
+    }
+
+    /**
+     * This method is used to open the camera activity when trying to access the camera for the heart rate measurement.
+     */
+    private void openCameraActivity(){
+        Intent intent = new Intent(getApplicationContext(), HeartRateMonitor.class);
+        startActivity(intent);
     }
 
     @Override
@@ -242,6 +255,27 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
             bPet.setBackground(getResources().getDrawable(R.drawable.maintop_background));
             bPet.setAlpha(255);
             bPet.setEnabled(true);
+        }
+    }
+
+    /**
+     * This method handles the permission for the camera app of the device.
+     */
+    private void handleCameraPermission(){
+        int permissionCheck = checkSelfPermission(Manifest.permission.CAMERA);
+        if(permissionCheck != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, CALLBACK_NUMBER);
+        } else {
+            openCameraActivity();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
+        if(grantResults.length > 0){
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                openCameraActivity();
+            }
         }
     }
 }
