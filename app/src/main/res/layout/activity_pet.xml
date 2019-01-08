@@ -22,10 +22,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:paddingLeft="60dp"
+            android:paddingLeft="100dp"
             android:text="Level"
             android:textAlignment="center"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorPrimary"
             android:textSize="35sp" />
 
         <TextView
@@ -34,9 +34,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:paddingRight="120dp"
+            android:paddingRight="150dp"
             android:textAlignment="center"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorPrimary"
             android:textSize="35sp" />
 
     </LinearLayout>
@@ -99,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@color/tileBackground"
         android:indeterminate="false"
         android:max="100"
         android:progress="40" />
@@ -269,7 +269,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@color/tileBackground"
         android:indeterminate="false"
         android:max="100"
         android:progress="40" />
@@ -291,7 +291,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@color/tileBackground"
         android:indeterminate="false"
         android:max="100"
         android:progress="40" />
@@ -305,9 +305,12 @@
 
         <Button
             android:id="@+id/button_startBattle"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/tileBackground"
             android:text="Start Battle"
             android:textAlignment="center" />
     </LinearLayout>
