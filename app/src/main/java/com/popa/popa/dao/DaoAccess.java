@@ -23,6 +23,9 @@ public interface DaoAccess {
     @Query("SELECT * FROM PostureData")
     List<PostureData> getPostureDataAfterTime();
 
+    @Query("SELECT COUNT(*) FROM PostureData")
+    int countPostureData();
+
     @Query("DELETE FROM PostureData")
     void deletePostureData();
 }

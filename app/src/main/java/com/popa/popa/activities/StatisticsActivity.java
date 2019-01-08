@@ -76,10 +76,13 @@ public class StatisticsActivity extends AppCompatActivity {
      */
     private void loadData(){
         new Thread(() -> {
+
             loadingSpinner(200, View.VISIBLE);
             postureData = (ArrayList<PostureData>) database.daoAccess().getPostureDataAfterTime();
             buildBarChart();
             loadingSpinner(200, View.GONE);
+
+            checkIfTableShouldBeCleaned();
         }).start();
     }
 
@@ -266,5 +269,21 @@ public class StatisticsActivity extends AppCompatActivity {
         cal.set(Calendar.SECOND, 0);
         cal.add(Calendar.DAY_OF_YEAR, -subtract);
         return new Date(cal.getTimeInMillis());
+    }
+
+    /**
+     * Checks if the amount of data in the sqlite database is over 100K.
+     */
+    private void checkIfTableShouldBeCleaned(){
+        if(database.daoAccess().countPostureData() > 100000){
+            cleanTable();
+        }
+    }
+
+    /**
+     * Delete the content of the sqlite database table
+     */
+    private void cleanTable(){
+        database.daoAccess().deletePostureData();
     }
 }

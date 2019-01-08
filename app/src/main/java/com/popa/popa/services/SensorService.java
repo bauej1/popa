@@ -151,7 +151,7 @@ public class SensorService implements ServiceConnection {
             vibrate();
             evaluateCounter = 0;
         } else {
-            if(x < (x - xTreshold)){
+            if(x < (initX - xTreshold)){
                 evaluateCounter++;
             }
         }
