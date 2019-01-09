@@ -82,7 +82,7 @@ public class StatisticsActivity extends AppCompatActivity {
             buildBarChart();
             loadingSpinner(200, View.GONE);
 
-            checkIfTableShouldBeCleaned();
+            //checkIfTableShouldBeCleaned();
         }).start();
     }
 

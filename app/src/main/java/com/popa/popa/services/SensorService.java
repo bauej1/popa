@@ -183,11 +183,13 @@ public class SensorService implements ServiceConnection {
     private void persist(float x, String timestamp){
         boolean goodPosture;
 
-        if(x < (x - xTreshold)){
+        if(x < (initX - xTreshold)){
             goodPosture = false;
         } else {
             goodPosture = true;
         }
+
+        System.out.println("GoodPosture by Log: " + goodPosture);
 
         new Thread(() -> {
             PostureData pd = new PostureData();
