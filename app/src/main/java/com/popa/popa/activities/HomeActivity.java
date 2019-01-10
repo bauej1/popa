@@ -217,16 +217,17 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
             Log.d( "becho ", message);
             if(message.charAt(0) == 'S'){
                 loggingSteps(message);
-            }else{
+            }else if(message.charAt(0) =='H'){
                 logging(message);
             }
         }
         // simple method to add the log TextView.
         public void logging(String message) {
-            tHeart.setText(message);
+            String heart = message.substring(1);
             editor = spHeart.edit();
-            editor.putString("rate",message);
+            editor.putString("rate",heart);
             editor.commit();
+            tHeart.setText(spHeart.getString("rate", "N/A"));
         }
         public void loggingSteps(String message){
             String steps = message.substring(1);

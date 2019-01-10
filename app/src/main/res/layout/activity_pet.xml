@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:paddingLeft="100dp"
+            android:paddingLeft="80dp"
             android:text="Level"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
@@ -280,7 +280,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:paddingTop="10dp"
-        android:text="Log 4 diary entries with the app"
+        android:text="Log 1 diary entry with the app"
         android:textColor="@android:color/black"
         android:textSize="16dp" />
 

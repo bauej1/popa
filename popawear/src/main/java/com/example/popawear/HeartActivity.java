@@ -81,8 +81,9 @@ public class HeartActivity extends WearableActivity  implements SensorEventListe
 
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_HEART_RATE) {
-            String msg = "" + (int)event.values[0];
-            text_bpm.setText(msg);
+            String msg = "H" + (int)event.values[0];
+            String frequency = msg.substring(1);
+            text_bpm.setText(frequency);
             Log.d(TAG, msg);
             dataContainer.setHeartValue((int)event.values[0]);
             //Requires a new thread to avoid blocking the UI

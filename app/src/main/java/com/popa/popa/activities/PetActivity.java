@@ -171,7 +171,7 @@ public class PetActivity extends AppCompatActivity implements
 
         //collects the diaryInputs for challenge 2
         int diaryInputs = Integer.valueOf(sp.getString("diaryInput","0"));
-        int diaryProgress = (diaryInputs*100)/ 4;
+        int diaryProgress = (diaryInputs*100)/ 1;
         challenge2.setProgress(diaryProgress);
         Log.d("haha",""+diaryProgress);
         if(diaryProgress>= 100){
@@ -194,7 +194,7 @@ public class PetActivity extends AppCompatActivity implements
         AlertDialog dialog = builder.create();
         dialog.show();
         dialog.getWindow().setBackgroundDrawableResource(R.color.appBackground);
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(R.color.tileBackgroundDark);
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.tileBackgroundDark));
 
         int stats = Integer.valueOf(tStrPetValue.getText().toString());
         stats = stats + 2;
