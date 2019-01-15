@@ -1,5 +1,8 @@
 package com.popa.popa.model;
 
+/** External Library from:
+ * @author Justin Wetherell <phishman3579@gmail.com>
+ */
 public class SensorFilter {
 
     private SensorFilter() {
