@@ -10,17 +10,16 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.popa.popa.R;
-import com.popa.popa.model.GestureHandler;
 
 public class TodayMoodActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
-    TextView textMood;
-    SeekBar seekBarMood;
-    ImageView imageMood;
-    GestureDetector gDetector;
+    private TextView textMood;
+    private SeekBar seekBarMood;
+    private ImageView imageMood;
+    private GestureDetector gDetector;
 
-    Intent intent;
-    Bundle bundle;
+    private Intent intent;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

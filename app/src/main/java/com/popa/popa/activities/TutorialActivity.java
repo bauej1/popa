@@ -20,8 +20,8 @@ public class TutorialActivity extends AppCompatActivity {
     private ImageView ivSpeech;
     private ArrayList<ImageView> hints;
 
-    Bundle bundle;
-    Intent intent;
+    private Bundle bundle;
+    private Intent intent;
 
     /**
      * Counts which hint is currently shown for the user

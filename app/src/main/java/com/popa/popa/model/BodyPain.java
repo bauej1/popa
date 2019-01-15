@@ -1,7 +1,5 @@
 package com.popa.popa.model;
 
-import android.widget.ToggleButton;
-
 public class BodyPain {
 
     private String path;

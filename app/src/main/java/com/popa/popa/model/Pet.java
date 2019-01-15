@@ -3,6 +3,7 @@ package com.popa.popa.model;
 import java.util.Random;
 
 public class Pet {
+
     private int level;
     private int experience;
     private String name;
@@ -88,19 +89,5 @@ public class Pet {
 
     public String getPrimaryAttribute() {
         return primaryAttribute;
-    }
-
-    public int attack(){
-        String attribute = "n";
-        Random rand = new Random();
-        int n = rand.nextInt(2);
-        int totalDmg = getStr()+getAgi()+getDex()+getIntel()+(getLuck()*n);
-
-        return totalDmg;
-    }
-    public void startFight(){
-        /** hier muss irgend eine Verbindung zu Frrebase und SpielerID gemacht werden
-         * danach kann die funktion attack ausgeführt werden und die werte der beiden verglichen
-         * werden. **/
     }
 }
