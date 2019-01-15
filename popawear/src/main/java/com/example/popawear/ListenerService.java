@@ -7,9 +7,13 @@ import android.util.Log;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
-/*
-This is the Listener on the mobile device to get message via Datalayer.
-Dataflow: Device --> wearable
+/**
+ *  This is a listener on the  device to get messages via
+ *  the datalayer and then pass it to the main activity so it can be
+ *  displayed.  the messages should be coming from the device to the smartwatch.
+ *
+ *   * @author JimSeeker - https://github.com/JimSeker/wearable
+ *
  */
 
 public class ListenerService extends WearableListenerService {

@@ -21,6 +21,10 @@ import com.google.android.gms.wearable.Wearable;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Controller for the Homeview of the Smartwatch
+ */
+
 public class HomeActivity extends WearableActivity implements SensorEventListener {
 
     private static final String TAG = "HeartActivity";
@@ -62,7 +66,7 @@ public class HomeActivity extends WearableActivity implements SensorEventListene
             }
         });
     }
-
+    //Method that registers the StepCounter sensor.
     public void setStepCounter(){
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);

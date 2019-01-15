@@ -1,5 +1,8 @@
 package com.popa.popa.model;
 
+/**
+ * Code used from: http://www.gadgetsaint.com/android/create-pedometer-step-counter-android/#.XD30EFxKiUk
+ */
 public class StepDetector {
 
     private static final int ACCEL_RING_SIZE = 50;

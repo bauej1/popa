@@ -20,6 +20,10 @@ import com.google.android.gms.wearable.Wearable;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Class that activates the Sensor to measure the heart frequency
+ */
+
 public class HeartActivity extends WearableActivity  implements SensorEventListener {
 
     private static final String TAG = "HeartActivity";
@@ -59,12 +63,13 @@ public class HeartActivity extends WearableActivity  implements SensorEventListe
         // Enables Always-on
         setAmbientEnabled();
         }
+        //Method to start (register) the built in heart frequecy sensor.
     private void startMeasure() {
         mSensorManager.registerListener(this, mHeartRateSensor, SensorManager.SENSOR_DELAY_FASTEST);
         toggler = false;
         btnStart.setText("Stop");
     }
-
+ //Stops the measure and unregisters the sensor, so no new data are being created.
     private void stopMeasure(){
         mSensorManager.unregisterListener(this);
         btnStart.setText("Measure");
@@ -78,7 +83,7 @@ public class HeartActivity extends WearableActivity  implements SensorEventListe
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         Log.d(TAG, "onAccuracyChanged - accuracy: " + accuracy);
     }
-
+    //when new Data from sensor is detected. it will write those into the share preferences and create a message that is being sent to the smartphone
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_HEART_RATE) {
             String msg = "H" + (int)event.values[0];

@@ -19,6 +19,9 @@ import java.util.concurrent.ExecutionException;
 
 import static android.support.constraint.Constraints.TAG;
 
+/**
+ * Class that Contains the Controller of the Diary View of the Smartwatch.
+ */
 public class MainActivity extends WearableActivity {
 
     private final static String TAG = "Wear MainActivity";
@@ -58,7 +61,7 @@ public class MainActivity extends WearableActivity {
         // Enables Always-on
         setAmbientEnabled();
     }
-
+    //The seekbars to control the value of the mood/sleep/pain
     public void seekBarControl(){
         seekBarMood.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -78,7 +81,7 @@ public class MainActivity extends WearableActivity {
             }
         });
     }
-
+    //best Spaghetti code that has a counter which counts the Views that have been displayed. and thanks to it loads one view after the other. (resets after the third View)
     public void buttonController(View v) {
         if (counter == 0) {
             setContentView(R.layout.activity_pain);

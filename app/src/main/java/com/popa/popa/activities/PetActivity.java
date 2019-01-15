@@ -166,6 +166,7 @@ public class PetActivity extends AppCompatActivity implements
         loadData();
     }
 
+    //Loads the Data at the firt start. Checks if there is already Data inside the cache. If none is found, it will create new shared properties.
     public void loadData(){
         if(!sp.contains("str")){
             editor = sp.edit();
@@ -317,7 +318,7 @@ public class PetActivity extends AppCompatActivity implements
         messagingService.storePetInSharedPreferences(pet);
     }
 
-
+    //gathers the informations from the Petsstats
     private void getPetFromSharedPreferences(){
         pet = messagingService.getPetFromSharedPreferences();
         setPetStats();
@@ -330,7 +331,7 @@ public class PetActivity extends AppCompatActivity implements
         tAgiPetValue.setText(pet.getAgi() + "");
         tIntPetValue.setText(pet.getIntel() + "");
     }
-
+    //gets the PetStats according to the displayed Stats.
     private void getPetStats(){
         pet.setStr(Integer.parseInt(tStrPetValue.getText() +""));
         pet.setDex(Integer.parseInt(tDexPetValue.getText() +""));

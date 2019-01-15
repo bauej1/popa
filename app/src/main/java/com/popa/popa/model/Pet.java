@@ -1,7 +1,8 @@
 package com.popa.popa.model;
 
-import java.util.Random;
-
+/**
+ * Class to create a new pet with its own Stats. Wasnt properly used for the current project, but might be useful in future =)
+ */
 public class Pet {
 
     private int level;

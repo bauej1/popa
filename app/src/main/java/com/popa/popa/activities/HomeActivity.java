@@ -22,6 +22,10 @@ import com.popa.popa.R;
 import com.popa.popa.model.StepDetector;
 import com.popa.popa.model.StepListener;
 
+/**
+ * Controller Class of the main View of the Application
+ */
+
 public class HomeActivity extends AppCompatActivity implements SensorEventListener, StepListener {
 
     private static int CALLBACK_NUMBER = 0;
