@@ -1,14 +1,8 @@
 package com.popa.popa.activities;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
@@ -19,23 +13,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
-import com.google.android.gms.wearable.Node;
-import com.google.android.gms.wearable.Wearable;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
 import com.popa.popa.R;
 import com.popa.popa.model.Pet;
 import com.popa.popa.services.MyFirebaseMessagingService;
-import com.popa.popa.services.PetService;
-
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class PetActivity extends AppCompatActivity implements
         View.OnClickListener  {
@@ -43,10 +25,7 @@ public class PetActivity extends AppCompatActivity implements
     private static final String URL = "https://fcm.googleapis.com/fcm/send";
 
     private MyFirebaseMessagingService messagingService;
-
-    String datapath = "/message_path";
-    Button mybutton;
-   // TextView logger;
+    private Button mybutton;
     protected Handler handler;
     String TAG = "Mobile MainActivity";
     int num = 1;
@@ -194,7 +173,7 @@ public class PetActivity extends AppCompatActivity implements
         AlertDialog dialog = builder.create();
         dialog.show();
         dialog.getWindow().setBackgroundDrawableResource(R.color.appBackground);
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(R.color.tileBackgroundDark);
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.tileBackgroundDark));
 
         int stats = Integer.valueOf(tStrPetValue.getText().toString());
         stats = stats + 2;

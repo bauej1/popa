@@ -21,9 +21,6 @@ import android.widget.TextView;
 import com.popa.popa.R;
 import com.popa.popa.model.StepDetector;
 import com.popa.popa.model.StepListener;
-import com.popa.popa.services.MessageReceiver;
-
-import java.security.Permission;
 
 public class HomeActivity extends AppCompatActivity implements SensorEventListener, StepListener {
 
@@ -48,9 +45,9 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
     private String steps;
     private Boolean watchConnected = false;
 
-    SharedPreferences sp;
-    SharedPreferences spHeart;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sp;
+    private SharedPreferences spHeart;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

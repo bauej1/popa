@@ -9,28 +9,25 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ToggleButton;
-
 import com.popa.popa.R;
 import com.popa.popa.model.BodyPain;
-import com.popa.popa.model.GestureHandler;
-
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class PainLocationActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
-    ToggleButton shoulderButton;
-    ToggleButton lowerBackButton;
-    ToggleButton sacrumButton;
-    ToggleButton otherAreaButton;
-    ToggleButton noPainButton;
-    ImageView elementBody;
-    ArrayList<BodyPain> bodyImageArray;
-    ArrayList<BodyPain> filteredList;
-    GestureDetector gDetector;
+    private ToggleButton shoulderButton;
+    private ToggleButton lowerBackButton;
+    private ToggleButton sacrumButton;
+    private ToggleButton otherAreaButton;
+    private ToggleButton noPainButton;
+    private ImageView elementBody;
+    private ArrayList<BodyPain> bodyImageArray;
+    private ArrayList<BodyPain> filteredList;
+    private GestureDetector gDetector;
 
-    Intent intent;
-    Bundle bundle;
+    private Intent intent;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

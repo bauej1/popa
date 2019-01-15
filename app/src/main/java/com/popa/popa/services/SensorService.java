@@ -102,7 +102,7 @@ public class SensorService implements ServiceConnection {
                                     initializePosture(x);
                                 }
                                 evaluatePosition(x);
-                                persist(x, ts);
+                                    persist(x, ts);
                             }
                         });
                     }

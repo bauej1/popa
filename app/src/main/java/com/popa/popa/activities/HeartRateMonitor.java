@@ -1,16 +1,13 @@
 package com.popa.popa.activities;
 
-
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
 import android.os.Bundle;
-import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,7 +19,6 @@ import android.widget.TextView;
 
 import com.popa.popa.R;
 import com.popa.popa.model.ImageProcessing;
-
 
 /**
  * This class extends Activity to handle a picture preview, process the preview

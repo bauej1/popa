@@ -9,18 +9,15 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.popa.popa.R;
-import com.popa.popa.model.GestureHandler;
-
 
 public class AgeActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
-    TextView textAge;
-    SeekBar seekBarAge;
-    GestureDetector gDetector;
+    private TextView textAge;
+    private SeekBar seekBarAge;
+    private GestureDetector gDetector;
 
-    Intent intent;
-    Bundle bundle;
-
+    private Intent intent;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

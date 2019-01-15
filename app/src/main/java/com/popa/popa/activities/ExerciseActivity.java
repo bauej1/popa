@@ -12,13 +12,13 @@ import com.popa.popa.R;
 
 public class ExerciseActivity extends AppCompatActivity {
 
-    Button exercise1;
-    Button exercise2;
-    Button exercise3;
-    Button exercise4;
-    Button exercise5;
-    Button exercise6;
-    Button exercise7;
+    private Button exercise1;
+    private Button exercise2;
+    private Button exercise3;
+    private Button exercise4;
+    private Button exercise5;
+    private Button exercise6;
+    private Button exercise7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
