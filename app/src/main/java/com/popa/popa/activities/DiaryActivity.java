@@ -216,6 +216,7 @@ public class DiaryActivity extends AppCompatActivity {
         }
 
     }
+
     private void loadData3(){
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", MODE_PRIVATE);
         Gson gson = new Gson();

@@ -10,17 +10,16 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.popa.popa.R;
-import com.popa.popa.model.GestureHandler;
 
 public class TodayPainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
-    TextView textPain;
-    SeekBar seekBarPain;
-    ImageView imageSmile;
-    GestureDetector gDetector;
+    private TextView textPain;
+    private SeekBar seekBarPain;
+    private ImageView imageSmile;
+    private GestureDetector gDetector;
 
-    Intent intent;
-    Bundle bundle;
+    private Intent intent;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

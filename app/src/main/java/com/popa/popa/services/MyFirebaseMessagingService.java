@@ -35,7 +35,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String OK = "OK";
     private static final String URL = "https://fcm.googleapis.com/fcm/send";
 
-
     private Activity activity;
     private SharedPreferences sp;
     private SharedPreferences tempSp;
@@ -122,8 +121,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         int totalRemote = getRemoteStatsTemporarily();
         int totalMyself = calcTotalMyself();
 
-        System.out.println("XX: Remote Total " + totalRemote);
-        System.out.println("XX: My Total " + totalMyself);
+        System.out.println("MyFireBaseMessagingService: Remote Total " + totalRemote);
+        System.out.println("MyFireBaseMessagingService: My Total " + totalMyself);
 
         createPushNotification(totalRemote, totalMyself);
     }

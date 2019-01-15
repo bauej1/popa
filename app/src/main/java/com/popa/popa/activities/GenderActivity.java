@@ -16,24 +16,22 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class GenderActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
-    ImageButton buttonGenderFemale;
-    ImageButton buttonGenderMale;
-    TextView textSwipe;
-    GifImageView gifSwipe;
-    GestureDetector gDetector;
-
-    Intent intent;
-
+    private ImageButton buttonGenderFemale;
+    private ImageButton buttonGenderMale;
+    private TextView textSwipe;
+    private GifImageView gifSwipe;
+    private GestureDetector gDetector;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.l_gender);
 
-        buttonGenderFemale = (ImageButton) findViewById(R.id.genderF);
-        buttonGenderMale = (ImageButton) findViewById(R.id.genderM);
-        textSwipe = (TextView) findViewById(R.id.swipeText);
-        gifSwipe = (GifImageView) findViewById(R.id.swipeGif);
+        buttonGenderFemale = findViewById(R.id.genderF);
+        buttonGenderMale = findViewById(R.id.genderM);
+        textSwipe = findViewById(R.id.swipeText);
+        gifSwipe = findViewById(R.id.swipeGif);
         gDetector = new GestureDetector(this);
 
         textSwipe.setVisibility(View.INVISIBLE);

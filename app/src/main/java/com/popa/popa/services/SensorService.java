@@ -37,7 +37,6 @@ public class SensorService implements ServiceConnection {
     private final String SENSOR_MAC_ADDRESS_STICK_ON = "E0:CE:8F:84:D5:4F";
     private final String SENSOR_MAC_ADDRESS_CLIP_ON = "C6:9B:12:3C:59:02";
 
-
     private BtleService.LocalBinder serviceBinder;
     private Context context;
     private MetaWearBoard board;
@@ -102,7 +101,7 @@ public class SensorService implements ServiceConnection {
                                     initializePosture(x);
                                 }
                                 evaluatePosition(x);
-                                persist(x, ts);
+                                    persist(x, ts);
                             }
                         });
                     }
@@ -188,8 +187,6 @@ public class SensorService implements ServiceConnection {
         } else {
             goodPosture = true;
         }
-
-        System.out.println("GoodPosture by Log: " + goodPosture);
 
         new Thread(() -> {
             PostureData pd = new PostureData();

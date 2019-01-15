@@ -13,12 +13,12 @@ import com.popa.popa.R;
 
 public class InformationActivity extends AppCompatActivity {
 
-    Intent intent = null;
-    Button posture;
-    Button exercises;
-    Button tips;
-    Button clothes;
-    Button tutorial;
+    private Intent intent = null;
+    private Button posture;
+    private Button exercises;
+    private Button tips;
+    private Button clothes;
+    private Button tutorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

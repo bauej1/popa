@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.popa.popa.R;
@@ -23,7 +22,6 @@ public class SettingsActivity extends Activity{
     private FirebaseAuth mAuth;
 
    private Switch swConnectSensor;
-   private Switch swConnectWatch;
    private Switch swPetMode;
 
    private TextView tStatus;
@@ -88,7 +86,6 @@ public class SettingsActivity extends Activity{
 
         swConnectSensor = findViewById(R.id.swConnectSensor);
         swPetMode = findViewById(R.id.swActivatePet);
-        swConnectWatch = findViewById(R.id.swConnectWatch);
         tStatus = findViewById(R.id.tStatus);
         logOut = findViewById(R.id.logOutButton);
         email = findViewById(R.id.tEmailSettings);
@@ -128,8 +125,6 @@ public class SettingsActivity extends Activity{
         SharedPreferences.Editor editor = sp.edit();
 
         editor.putBoolean("petMode", swPetMode.isChecked());
-//        editor.putBoolean("sensor", swConnectSensor.isChecked());
-//        editor.putBoolean("watch", swConnectWatch.isChecked());
 
         editor.commit();
     }
@@ -139,14 +134,8 @@ public class SettingsActivity extends Activity{
      */
     private void readSettings(){
         SharedPreferences sp = this.getApplicationContext().getSharedPreferences("settings", 0);
-
-//        boolean sensorStatus = sp.getBoolean("sensor", false);
         boolean petStatus = sp.getBoolean("petMode", false);
-//        boolean watchStatus = sp.getBoolean("watch", false);
-
-//        setSettingOnControl(swConnectSensor, sensorStatus);
         setSettingOnControl(swPetMode, petStatus);
-//        setSettingOnControl(swConnectWatch, watchStatus);
     }
 
     /**

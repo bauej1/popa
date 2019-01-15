@@ -23,12 +23,12 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
     private FirebaseAuth mAuth;
 
-    Button signUpButton;
-    Button logInButton;
-    EditText tMail;
-    EditText tPassword;
-    Button resetPassword;
-    Intent intent = null;
+    private Button signUpButton;
+    private Button logInButton;
+    private EditText tMail;
+    private EditText tPassword;
+    private Button resetPassword;
+    private Intent intent = null;
 
     private static final String TAG = "EmailPassword";
 
@@ -45,11 +45,11 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             finish();
         }
 
-        signUpButton = (Button) findViewById(R.id.bSignup);
-        logInButton = (Button) findViewById(R.id.bLogin);
-        resetPassword = (Button) findViewById(R.id.resetPassword);
-        tMail = (EditText) findViewById(R.id.tMail);
-        tPassword = (EditText) findViewById(R.id.tPassword);
+        signUpButton = findViewById(R.id.bSignup);
+        logInButton = findViewById(R.id.bLogin);
+        resetPassword = findViewById(R.id.resetPassword);
+        tMail = findViewById(R.id.tMail);
+        tPassword = findViewById(R.id.tPassword);
 
         logInButton.setOnClickListener(this);
         resetPassword.setOnClickListener(this);

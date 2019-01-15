@@ -1,14 +1,8 @@
 package com.popa.popa.activities;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
@@ -19,23 +13,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
-import com.google.android.gms.wearable.Node;
-import com.google.android.gms.wearable.Wearable;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
 import com.popa.popa.R;
 import com.popa.popa.model.Pet;
 import com.popa.popa.services.MyFirebaseMessagingService;
-import com.popa.popa.services.PetService;
-
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class PetActivity extends AppCompatActivity implements
         View.OnClickListener  {
@@ -43,13 +25,7 @@ public class PetActivity extends AppCompatActivity implements
     private static final String URL = "https://fcm.googleapis.com/fcm/send";
 
     private MyFirebaseMessagingService messagingService;
-
-    String datapath = "/message_path";
-    Button mybutton;
-   // TextView logger;
-    protected Handler handler;
-    String TAG = "Mobile MainActivity";
-    int num = 1;
+    private Button mybutton;
 
     //Stat Controls
     private TextView tStrPetValue;
@@ -58,7 +34,6 @@ public class PetActivity extends AppCompatActivity implements
     private TextView tIntPetValue;
     private TextView tPetName;
     private TextView tPetlvl;
-    private String primaryAttribute;
     private Pet pet;
     private ImageButton nextPet;
     private ImageButton previousPet;
@@ -89,14 +64,11 @@ public class PetActivity extends AppCompatActivity implements
         nextPet = findViewById(R.id.nextPet);
         previousPet = findViewById(R.id.previousPet);
         petView = findViewById(R.id.petView);
-        //    petView.setImageResource(R.drawable.gunter1);
 
         //Progressbar connect
         experience = findViewById(R.id.progressBar_Petlvl);
         challenge1 = findViewById(R.id.progressBar_challenge1);
         challenge2 = findViewById(R.id.progressBar_challenge2);
-
-
 
         //sets the klicklistener for the PetViewChange
         nextPet.setOnClickListener(v->{
@@ -109,7 +81,6 @@ public class PetActivity extends AppCompatActivity implements
         //get the widgets
         mybutton = findViewById(R.id.button_startBattle);
         mybutton.setOnClickListener(this);
-      //  logger = findViewById(R.id.text_petName);
 
         //Stat Controls initializing
         tStrPetValue = findViewById(R.id.text_PetStr);
@@ -124,22 +95,6 @@ public class PetActivity extends AppCompatActivity implements
         spStepper = this.getApplicationContext().getSharedPreferences("heartRate", 0);
         //loads the petData
         loadData();
-
-    /**    //message handler for the send thread.
-        handler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-                Bundle stuff = msg.getData();
-                logthis(stuff.getString("logthis"));
-                return true;
-            }
-        });
-
-        // Register the local broadcast receiver
-        IntentFilter messageFilter = new IntentFilter(Intent.ACTION_SEND);
-        MessageReceiver messageReceiver = new MessageReceiver();
-        LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
-**/
 
         tIntPetValue.setText("40");
 
@@ -171,9 +126,10 @@ public class PetActivity extends AppCompatActivity implements
 
         //collects the diaryInputs for challenge 2
         int diaryInputs = Integer.valueOf(sp.getString("diaryInput","0"));
-        int diaryProgress = (diaryInputs*100)/ 1;
+        int diaryProgress = (diaryInputs*100)/ 4;
+
         challenge2.setProgress(diaryProgress);
-        Log.d("haha",""+diaryProgress);
+
         if(diaryProgress>= 100){
             levelUp();
             editor.putString("diaryInput","0");
@@ -236,9 +192,7 @@ public class PetActivity extends AppCompatActivity implements
             experience.setProgress(sp.getInt("progressLvl",0));
             editor.commit();
 
-
-
-        }else{
+        } else {
             tStrPetValue.setText(sp.getString("str", "0"));
             tDexPetValue.setText(sp.getString("dex", "0"));
             tAgiPetValue.setText(sp.getString("agi", "0"));
